@@ -1,3 +1,4 @@
+
 package epsi.front;
 
 import java.io.IOException;
@@ -10,11 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import epsi.business.TokenService;
-import epsi.dao.ArtistDao;
 import epsi.dao.TokenDao;
 import epsi.model.User;
 
-public class MusicServlet extends HttpServlet{
+public class HomeServlet extends HttpServlet{
 	
 	private String LOGIN_COOKIE = "loginCookie";
 	
@@ -38,7 +38,7 @@ public class MusicServlet extends HttpServlet{
 		
 		// Trying to reload context from cookie when the session is new	
 		if(req.getSession().isNew()){
-			String tokenValue = "";
+			String tokenValue = null;
 			
 			for(Cookie cookie : req.getCookies()){
 				if(LOGIN_COOKIE.equals(cookie.getName())){
@@ -56,9 +56,6 @@ public class MusicServlet extends HttpServlet{
 				}
 			}
 		}
-		
-		ArtistDao artistDao = new ArtistDao();
-		req.setAttribute("artists", artistDao.find());
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/jsp/home.jsp");
 		dispatcher.forward(req, resp);
