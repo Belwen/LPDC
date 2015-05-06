@@ -218,9 +218,7 @@ LOCK TABLES `user` WRITE;
 
 INSERT INTO `user` (`id_User`, `nom`, `prenom`, `date_Naissance`, `adresse`, `telephone`, `email`, `password`)
 VALUES
-	(1,'COUTURIER','AurÃ©lien','0000-00-00','','0612345678','aurelien.couturier@epsi.fr','coucou'),
 	(2,'MURE','SÃ©bastien','0000-00-00','','0612345678','sebastien.mure@epsi.fr','coucou'),
-	(3,'SEMPE','Jean-Baptiste','0000-00-00','','0612345678','jeanbaptiste.sempe@epsi.fr','coucou'),
 	(4,'THIRY','Nicolas','0000-00-00','','0612345678','nicolas.thiry@epsi.fr','coucou');
 
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
