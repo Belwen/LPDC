@@ -1,26 +1,22 @@
+<%@page import="epsi.dao.UserDao" %>
+<%@page import="epsi.model.User"%>
 <%@page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@include file="header.jsp" %>
 
-<%-- <ul class="media-list">
+<ul class="media-list">
 <%
-	List<Artist> artists = (List<Artist>) request.getAttribute("artists");	
+	List<User> users = (List<User>) request.getAttribute("users");	
 	
-	for(Artist artist: artists){
+	for(User user: users){
 		%>
 		<li class="media">
- 				<div class="media-left">
-   				<a href="./app/artists?id=<%= artist.getId() %>">
-     					<img class="media-object thumbnail-home" src="<%= artist.getImageUrl() %>" alt="...">
-   				</a>
- 				</div>
  				<div class="media-body">
-   			<h4 class="media-heading"><%= artist.getName()  %></h4>
-   			<%= artist.getBiography() %>
+   					<h4 class="media-heading"><%= user.getNom()  %></h4>
  				</div>
 		</li>
 	<%}%>
-</ul> --%>
+</ul>
 
 <%@include file="footer.jsp" %>

@@ -5,4 +5,4 @@
 /target
 /src/main/resources/META-INF
 /src/main/resources/META-INF/persistence.xml
-.DS_Store
+*.DS_Store

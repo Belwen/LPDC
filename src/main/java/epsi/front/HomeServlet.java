@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import epsi.business.TokenService;
 import epsi.dao.TokenDao;
+import epsi.dao.UserDao;
 import epsi.model.User;
 
 public class HomeServlet extends HttpServlet{
@@ -35,6 +36,9 @@ public class HomeServlet extends HttpServlet{
 			throws ServletException, IOException {
 		
 		System.out.println("GET /");
+		
+		UserDao userDao = new UserDao();
+		req.setAttribute("users", userDao.find());
 		
 		// Trying to reload context from cookie when the session is new	
 		if(req.getSession().isNew()){
