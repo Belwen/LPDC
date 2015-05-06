@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 06 Mai 2015 à 09:40
+-- Généré le :  Mer 06 Mai 2015 à 11:14
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -32,11 +32,10 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `id_Commande` int(11) NOT NULL AUTO_INCREMENT,
   `dateH_Commande` datetime NOT NULL,
   `heure_Livraison` datetime NOT NULL,
+  `livraison` varchar(30) DEFAULT NULL,
   `id_User` int(11) NOT NULL,
-  `id_Type_Livraison` int(11) NOT NULL,
   `id_Etat` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_Commande`),
-  KEY `id_Type_Livraison` (`id_Type_Livraison`),
   KEY `id_Etat` (`id_Etat`),
   KEY `FK_Commande_id_User` (`id_User`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -89,6 +88,9 @@ CREATE TABLE IF NOT EXISTS `fabrique` (
 CREATE TABLE IF NOT EXISTS `menu` (
   `nb_personne` int(11) NOT NULL,
   `id_Produit` int(11) NOT NULL,
+  `prix` float DEFAULT NULL,
+  `designation` varchar(50) DEFAULT NULL,
+  `description` text,
   PRIMARY KEY (`id_Produit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -99,10 +101,10 @@ CREATE TABLE IF NOT EXISTS `menu` (
 --
 
 CREATE TABLE IF NOT EXISTS `menu_contient` (
-  `id_Produit` int(11) NOT NULL,
-  `id_Produit_1` int(11) NOT NULL,
-  PRIMARY KEY (`id_Produit`,`id_Produit_1`),
-  KEY `FK_contient_id_Produit_1` (`id_Produit_1`)
+  `id_Produit_Menu` int(11) NOT NULL,
+  `id_Produit_Plat` int(11) NOT NULL,
+  PRIMARY KEY (`id_Produit_Menu`,`id_Produit_Plat`),
+  KEY `FK_contient_id_Produit_1` (`id_Produit_Plat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -141,9 +143,12 @@ CREATE TABLE IF NOT EXISTS `panier_contient` (
 --
 
 CREATE TABLE IF NOT EXISTS `plat` (
+  `id_Produit` int(11) NOT NULL,
   `nb_Personne` int(11) NOT NULL,
   `est_Chaud` tinyint(1) NOT NULL,
-  `id_Produit` int(11) NOT NULL,
+  `prix` float DEFAULT NULL,
+  `designation` varchar(50) DEFAULT NULL,
+  `description` text,
   `id_Type_Cuisine` int(11) NOT NULL,
   PRIMARY KEY (`id_Produit`),
   KEY `FK_Plat_id_Type_Cuisine` (`id_Type_Cuisine`)
@@ -203,18 +208,6 @@ CREATE TABLE IF NOT EXISTS `type_cuisine` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `type_livraison`
---
-
-CREATE TABLE IF NOT EXISTS `type_livraison` (
-  `id_Type_Livraison` int(11) NOT NULL AUTO_INCREMENT,
-  `designation_Type_Livraison` varchar(30) NOT NULL,
-  PRIMARY KEY (`id_Type_Livraison`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `user`
 --
 
@@ -251,9 +244,8 @@ CREATE TABLE IF NOT EXISTS `_possede` (
 -- Contraintes pour la table `commande`
 --
 ALTER TABLE `commande`
-  ADD CONSTRAINT `fk_Etat` FOREIGN KEY (`id_Etat`) REFERENCES `etat_commande` (`id_Etat`),
-  ADD CONSTRAINT `FK_Commande_id_Type_Livraison` FOREIGN KEY (`id_Type_Livraison`) REFERENCES `type_livraison` (`id_Type_Livraison`),
-  ADD CONSTRAINT `FK_Commande_id_User` FOREIGN KEY (`id_User`) REFERENCES `user` (`id_User`);
+  ADD CONSTRAINT `FK_Commande_id_User` FOREIGN KEY (`id_User`) REFERENCES `user` (`id_User`),
+  ADD CONSTRAINT `fk_Etat` FOREIGN KEY (`id_Etat`) REFERENCES `etat_commande` (`id_Etat`);
 
 --
 -- Contraintes pour la table `commande_contient`
@@ -279,8 +271,8 @@ ALTER TABLE `menu`
 -- Contraintes pour la table `menu_contient`
 --
 ALTER TABLE `menu_contient`
-  ADD CONSTRAINT `FK_contient_id_Produit_1` FOREIGN KEY (`id_Produit_1`) REFERENCES `produit` (`id_Produit`),
-  ADD CONSTRAINT `FK_contient_id_Produit` FOREIGN KEY (`id_Produit`) REFERENCES `produit` (`id_Produit`);
+  ADD CONSTRAINT `FK_contient_id_Produit_1` FOREIGN KEY (`id_Produit_Plat`) REFERENCES `produit` (`id_Produit`),
+  ADD CONSTRAINT `FK_contient_id_Produit` FOREIGN KEY (`id_Produit_Menu`) REFERENCES `produit` (`id_Produit`);
 
 --
 -- Contraintes pour la table `panier`
@@ -299,8 +291,8 @@ ALTER TABLE `panier_contient`
 -- Contraintes pour la table `plat`
 --
 ALTER TABLE `plat`
-  ADD CONSTRAINT `FK_Plat_id_Type_Cuisine` FOREIGN KEY (`id_Type_Cuisine`) REFERENCES `type_cuisine` (`id_Type_Cuisine`),
-  ADD CONSTRAINT `FK_Plat_id_Produit` FOREIGN KEY (`id_Produit`) REFERENCES `produit` (`id_Produit`);
+  ADD CONSTRAINT `FK_Plat_id_Produit` FOREIGN KEY (`id_Produit`) REFERENCES `produit` (`id_Produit`),
+  ADD CONSTRAINT `FK_Plat_id_Type_Cuisine` FOREIGN KEY (`id_Type_Cuisine`) REFERENCES `type_cuisine` (`id_Type_Cuisine`);
 
 --
 -- Contraintes pour la table `_possede`
