@@ -1,6 +1,6 @@
 package epsi.main;
 
-import epsi.dao.ArtistDao;
+/*import epsi.dao.ArtistDao;
 import epsi.model.Artist;
 
 
@@ -23,3 +23,4 @@ public class Main {
 	}
 
 }
+*/

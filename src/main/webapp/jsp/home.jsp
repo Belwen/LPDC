@@ -1,11 +1,9 @@
-<%@page import="epsi.dao.ArtistDao" %>
-<%@page import="epsi.model.Artist"%>
 <%@page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@include file="header.jsp" %>
 
-<ul class="media-list">
+<%-- <ul class="media-list">
 <%
 	List<Artist> artists = (List<Artist>) request.getAttribute("artists");	
 	
@@ -23,6 +21,6 @@
  				</div>
 		</li>
 	<%}%>
-</ul>
+</ul> --%>
 
 <%@include file="footer.jsp" %>

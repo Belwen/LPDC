@@ -10,9 +10,7 @@ import javax.persistence.Persistence;
 
 import org.hibernate.Hibernate;
 
-import epsi.exception.ArtistNotFoundException;
 import epsi.exception.UserNotFoundException;
-import epsi.model.Artist;
 import epsi.model.User;
 
 public class UserDao {
@@ -95,7 +93,6 @@ public class UserDao {
 		try{
 			User user = (User) em.createQuery("Select u FROM User u WHERE u.email=:email")
 							.setParameter("email", username).getSingleResult();
-			Hibernate.initialize(user.getAlbums());
 			return user;
 			
 		}catch(NoResultException ex){

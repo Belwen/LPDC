@@ -10,15 +10,17 @@
 	<link href="/static/css/bootstrap.css" rel="stylesheet"/>
 	<link href="/static/css/style.css" rel="stylesheet"/>
 	
-	<title>11 heures</title>
+	<title>La Pate de cannard</title>
 </head>
 <body>
 	<div class="container">
 	
 		<div class="header" style="height: 80px">
 			<div class="pull-left">
-				<h1>LPDC</h1>
+
+				<h1>La pate de cannard !</h1>
 				<h5>Faites vous livrer!</h5>
+
 			</div>
 			<div class="pull-right" style="margin-top:20px">
 			
@@ -55,7 +57,7 @@
 				else{
 					User user  = (User) request.getSession().getAttribute("user");
 			%>
-				<p> Connecté en tant que <%=user.getFirstName() + " " + user.getLastName()%>
+				<p> Connecté en tant que <%=user.getNom() + " " + user.getPrenom()%>
 				<a href="/app/logout">(se déconnecter)</a></p>
 			<%
 				}

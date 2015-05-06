@@ -11,7 +11,7 @@
 
 	<servlet>
 		<servlet-name>homeServlet</servlet-name>
-		<servlet-class>epsi.front.MusicServlet</servlet-class>
+		<servlet-class>epsi.front.HomeServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
