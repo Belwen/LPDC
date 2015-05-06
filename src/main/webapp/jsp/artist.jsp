@@ -12,26 +12,30 @@ Artist artist = (Artist) request.getAttribute("artist");
 Collection<Album> albums= artist.getAlbums();
 
 %><h4><%= artist.getName() %></h4>
+<h4><%= artist.getBiography() %></h4>
+<h4>Albums disponibles à l'achat:</h4>
 <ul>
 <%
 
 for(Album album : albums){
 	%>
 	<li><%= album.getTitle() %> 
-		<ul>
+		 <ul><br>
 		<%
 			for(Track track : album.getTracks()){
 				
 				%>
-				<li><%= track.getTitle() %> </li>	
+				<li><%= track.getTitle() %> </li>
 				<%
 			}
 		%>
 		</ul>
+		<br>
 	</li>
 	<div>
 		<a class="btn btn-default" href="/app/buyalbum?id=<%= album.getId() %>" role="button">J'achète !</a>
 	</div>
+	<br>
 	<%
 }
 %>
