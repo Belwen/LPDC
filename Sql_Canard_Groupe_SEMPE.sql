@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 06 Mai 2015 à 09:34
+-- Généré le :  Mer 06 Mai 2015 à 09:40
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `bddcanard`
+-- Base de données :  `bdd_lpdc`
 --
-CREATE DATABASE IF NOT EXISTS `bddcanard` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `bddcanard`;
+CREATE DATABASE IF NOT EXISTS `bdd_lpdc` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `bdd_lpdc`;
 
 -- --------------------------------------------------------
 
@@ -36,9 +36,9 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `id_Type_Livraison` int(11) NOT NULL,
   `id_Etat` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_Commande`),
-  KEY `FK_Commande_id_User` (`id_User`),
   KEY `id_Type_Livraison` (`id_Type_Livraison`),
-  KEY `id_Etat` (`id_Etat`)
+  KEY `id_Etat` (`id_Etat`),
+  KEY `FK_Commande_id_User` (`id_User`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -225,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `date_Naissance` date NOT NULL,
   `adresse` varchar(100) NOT NULL,
   `telephone` varchar(12) NOT NULL,
-  `mail` varchar(40) NOT NULL,
+  `email` varchar(40) NOT NULL,
   `password` varchar(30) NOT NULL,
   PRIMARY KEY (`id_User`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
