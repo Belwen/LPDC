@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 06 Mai 2015 à 08:52
+-- Généré le :  Mer 06 Mai 2015 à 09:30
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -29,12 +29,14 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `commande` (
   `id_Commande` int(11) NOT NULL AUTO_INCREMENT,
   `dateH_Commande` datetime NOT NULL,
-  `id_User` int(11) NOT NULL,
   `heure_Livraison` datetime NOT NULL,
+  `id_User` int(11) NOT NULL,
   `id_Type_Livraison` int(11) NOT NULL,
+  `id_Etat` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_Commande`),
   KEY `FK_Commande_id_User` (`id_User`),
-  KEY `FK_Commande_id_Type_Livraison` (`id_Type_Livraison`)
+  KEY `id_Type_Livraison` (`id_Type_Livraison`),
+  KEY `id_Etat` (`id_Etat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -45,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
 -- Contraintes pour la table `commande`
 --
 ALTER TABLE `commande`
+  ADD CONSTRAINT `fk_Etat` FOREIGN KEY (`id_Etat`) REFERENCES `etat_commande` (`id_Etat`),
   ADD CONSTRAINT `FK_Commande_id_Type_Livraison` FOREIGN KEY (`id_Type_Livraison`) REFERENCES `type_livraison` (`id_Type_Livraison`),
   ADD CONSTRAINT `FK_Commande_id_User` FOREIGN KEY (`id_User`) REFERENCES `user` (`id_User`);
 
