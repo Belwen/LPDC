@@ -17,8 +17,8 @@
 	
 		<div class="header" style="height: 80px">
 			<div class="pull-left">
-				<h1>11h</h1>
-				<h5>le site de la musique d'arrière garde...</h5>
+				<h1>LPDC</h1>
+				<h5>Faites vous livrer!</h5>
 			</div>
 			<div class="pull-right" style="margin-top:20px">
 			
