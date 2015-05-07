@@ -38,6 +38,11 @@
 		<servlet-class>epsi.front.PlatServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<servlet>
+		<servlet-name>MenuServlet</servlet-name>
+		<servlet-class>epsi.front.MenuServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 	
 	
 	
@@ -47,6 +52,10 @@
 	<servlet-mapping>
 		<servlet-name>PlatServlet</servlet-name>
 		<url-pattern>/app/plats</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MenuServlet</servlet-name>
+		<url-pattern>/app/menus</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>

@@ -11,21 +11,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import epsi.business.TokenService;
+import epsi.dao.PlatHome;
 import epsi.dao.TokenDao;
 import epsi.dao.UserDao;
-import epsi.model.User;
 import epsi.model.Plat;
-import epsi.dao.PlatHome;
+import epsi.model.User;
 import epsi.model.Menu;
 import epsi.dao.MenuHome;
+import epsi.exception.MenuNotFoundException;
 
-public class HomeServlet extends HttpServlet{
+public class MenuServlet extends HttpServlet{
 	
 	private String LOGIN_COOKIE = "loginCookie";
 	
 	@Override
 	public void init() throws ServletException {
-		System.out.println("init: loading home servlet");
+		System.out.println("init: loading menu servlet");
 		super.init();
 	}
 	
@@ -39,33 +40,26 @@ public class HomeServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		System.out.println("GET /");
-		
-		PlatHome platDao = new PlatHome();
-		req.setAttribute("plats", platDao.find());
-		
+		System.out.println("GET /menus");
 		MenuHome menuDao = new MenuHome();
-		req.setAttribute("menus", menuDao.find());
-		
-		// Trying to reload context from cookie when the session is new	
-		if(req.getSession().isNew()){
-			String tokenValue = null;
-			
-			for(Cookie cookie : req.getCookies()){
-				if(LOGIN_COOKIE.equals(cookie.getName())){
-					tokenValue = cookie.getValue();
-				}
-			}
-						
-			if(tokenValue != null){
-				try{
-					TokenService tokenService = new TokenService(new TokenDao());
-					User user = tokenService.validateToken(tokenValue);
-					req.getSession().setAttribute("user", user);
-				}catch(Exception e){
-					System.out.println("Token " + tokenValue + " is invalid or expired (" + e.getMessage() + ")");
-				}
-			}
+		System.out.println("go before try doGet");		
+		try{
+			System.out.println("go in try doGet");
+			Long id_Produit = Long.valueOf(req.getParameter("id"));		
+			Menu menu = menuDao.findById(id_Produit);
+			req.setAttribute("menu", menu);
+
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/jsp/menu.jsp");
+			dispatcher.forward(req, resp);
+		}
+		catch(NumberFormatException nfe){
+			System.err.println(nfe);
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/static/404.html");
+			dispatcher.forward(req, resp);
+		}catch(MenuNotFoundException anfe){
+			System.err.println(anfe);
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/static/404.html");
+			dispatcher.forward(req, resp);
 		}
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/jsp/home.jsp");
