@@ -22,7 +22,7 @@ import org.hibernate.annotations.Parameter;
 @Table(name = "plat", catalog = "bdd_lpdc")
 public class Plat implements java.io.Serializable {
 
-	private int idProduit;
+	private long idProduit;
 	private Produit produit;
 	private TypeCuisine typeCuisine;
 	private int nbPersonne;
@@ -57,11 +57,11 @@ public class Plat implements java.io.Serializable {
 	@Id
 	@GeneratedValue(generator = "generator")
 	@Column(name = "id_Produit", unique = true, nullable = false)
-	public int getIdProduit() {
+	public long getIdProduit() {
 		return this.idProduit;
 	}
 
-	public void setIdProduit(int idProduit) {
+	public void setIdProduit(long idProduit) {
 		this.idProduit = idProduit;
 	}
 

@@ -24,7 +24,7 @@ import javax.persistence.Table;
 @Table(name = "produit", catalog = "bdd_lpdc")
 public class Produit implements java.io.Serializable {
 
-	private Integer idProduit;
+	private long idProduit;
 	private String designationProduit;
 	private float prix;
 	private Set<TypeContenant> typeContenants = new HashSet<TypeContenant>(0);
@@ -66,11 +66,11 @@ public class Produit implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id_Produit", unique = true, nullable = false)
-	public Integer getIdProduit() {
+	public long getIdProduit() {
 		return this.idProduit;
 	}
 
-	public void setIdProduit(Integer idProduit) {
+	public void setIdProduit(long idProduit) {
 		this.idProduit = idProduit;
 	}
 

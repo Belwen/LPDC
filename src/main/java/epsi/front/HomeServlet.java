@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import epsi.business.TokenService;
 import epsi.dao.TokenDao;
+import epsi.dao.UserDao;
 import epsi.model.User;
+import epsi.model.Plat;
+import epsi.dao.PlatHome;
 
 public class HomeServlet extends HttpServlet{
 	
@@ -20,7 +23,7 @@ public class HomeServlet extends HttpServlet{
 	
 	@Override
 	public void init() throws ServletException {
-		System.out.println("init: loading music servlet");
+		System.out.println("init: loading home servlet");
 		super.init();
 	}
 	
@@ -35,6 +38,9 @@ public class HomeServlet extends HttpServlet{
 			throws ServletException, IOException {
 		
 		System.out.println("GET /");
+		
+		PlatHome platDao = new PlatHome();
+		req.setAttribute("plats", platDao.find());
 		
 		// Trying to reload context from cookie when the session is new	
 		if(req.getSession().isNew()){

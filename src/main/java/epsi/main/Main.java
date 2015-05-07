@@ -1,7 +1,7 @@
 package epsi.main;
 
-/*import epsi.dao.ArtistDao;
-import epsi.model.Artist;
+import epsi.dao.PlatHome;
+import epsi.model.Plat;
 
 
 public class Main {
@@ -9,10 +9,10 @@ public class Main {
 	public static void main (String[] args){
 				
 		try{		
-			ArtistDao artistDao = new ArtistDao();
+			PlatHome platDao = new PlatHome();
 		
-			for(Artist artist: artistDao.find()){
-				System.out.println(artist);
+			for(Plat plat: platDao.find()){
+				System.out.println(plat);
 			}
 			
 		}
@@ -23,4 +23,3 @@ public class Main {
 	}
 
 }
-*/
