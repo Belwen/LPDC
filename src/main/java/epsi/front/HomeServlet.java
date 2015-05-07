@@ -38,10 +38,9 @@ public class HomeServlet extends HttpServlet{
 			throws ServletException, IOException {
 		
 		System.out.println("GET /");
-
+		
 		PlatHome platDao = new PlatHome();
 		req.setAttribute("plats", platDao.find());
-
 		
 		// Trying to reload context from cookie when the session is new	
 		if(req.getSession().isNew()){

@@ -17,6 +17,7 @@
    						<h4 class="media-heading"><%= plat.getDesignation()  %></h4>
  					</div>
    				</a>
+ 				
 		</li>
 	<%}%>
 </ul>
