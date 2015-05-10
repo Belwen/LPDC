@@ -26,7 +26,7 @@ public class User implements java.io.Serializable {
 	private Integer idUser;
 	private String nom;
 	private String prenom;
-	private Date dateNaissance;
+	private String dateNaissance;
 	private String adresse;
 	private String telephone;
 	private String email;
@@ -37,7 +37,7 @@ public class User implements java.io.Serializable {
 	public User() {
 	}
 
-	public User(String nom, String prenom, Date dateNaissance, String adresse,
+	public User(String nom, String prenom, String dateNaissance, String adresse,
 			String telephone, String email, String password) {
 		this.nom = nom;
 		this.prenom = prenom;
@@ -48,7 +48,7 @@ public class User implements java.io.Serializable {
 		this.password = password;
 	}
 
-	public User(String nom, String prenom, Date dateNaissance, String adresse,
+	public User(String nom, String prenom, String dateNaissance, String adresse,
 			String telephone, String email, String password,
 			Set<Panier> paniers, Set<Commande> commandes) {
 		this.nom = nom;
@@ -82,7 +82,7 @@ public class User implements java.io.Serializable {
 		this.nom = nom;
 	}
 
-	@Column(name = "prenom", nullable = false, length = 30)
+	@Column(name = "prenom", nullable = true, length = 30)
 	public String getPrenom() {
 		return this.prenom;
 	}
@@ -91,13 +91,12 @@ public class User implements java.io.Serializable {
 		this.prenom = prenom;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "date_Naissance", nullable = false, length = 10)
-	public Date getDateNaissance() {
+	@Column(name = "date_Naissance", nullable = true, length = 10)
+	public String getDateNaissance() {
 		return this.dateNaissance;
 	}
 
-	public void setDateNaissance(Date dateNaissance) {
+	public void setDateNaissance(String dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 
@@ -128,7 +127,7 @@ public class User implements java.io.Serializable {
 		this.email = email;
 	}
 
-	@Column(name = "password", nullable = false, length = 30)
+	@Column(name = "password", nullable = true, length = 30)
 	public String getPassword() {
 		return this.password;
 	}

@@ -47,8 +47,12 @@
 					 </div>
 		  			
 		  			 <button type="submit" class="btn btn-default">Sign in</button>
+		  			 
 				
 				</form>
+				<a href="/jsp/inscription.jsp">
+					<button class="btn btn-default">S'inscrire</button>
+				</a>
 			<%
 					if(request.getAttribute("authenticationError") != null){
 						%> <p style="color:red;"> Nom d'utilisateur ou mot de passe incorrect </p> <%
@@ -62,6 +66,8 @@
 			<%
 				}
 			%> 
+			<p class="info">${ message }</p>
+			
 			</div>
 		</div>
 		

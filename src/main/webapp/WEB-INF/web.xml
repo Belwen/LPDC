@@ -1,98 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
-                http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-	version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee">
-	<servlet>
-		<servlet-name>hello</servlet-name>
-		<servlet-class>epsi.front.HelloServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <servlet>
+    <servlet-name>hello</servlet-name>
+    <servlet-class>epsi.front.HelloServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>homeServlet</servlet-name>
+    <servlet-class>epsi.front.HomeServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>loginServlet</servlet-name>
+    <servlet-class>epsi.front.LoginServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>logoutServlet</servlet-name>
+    <servlet-class>epsi.front.LogoutServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>albumPurchaseServlet</servlet-name>
+    <servlet-class>epsi.front.CollectionServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>PlatServlet</servlet-name>
+    <servlet-class>epsi.front.PlatServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>MenuServlet</servlet-name>
+    <servlet-class>epsi.front.MenuServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>CreationClient</servlet-name>
+    <servlet-class>epsi.front.CreationClientServlet</servlet-class>
+  </servlet>
 
-	<servlet>
-		<servlet-name>homeServlet</servlet-name>
-		<servlet-class>epsi.front.HomeServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-
-	
-	<servlet>
-		<servlet-name>loginServlet</servlet-name>
-		<servlet-class>epsi.front.LoginServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	
-	<servlet>
-		<servlet-name>logoutServlet</servlet-name>
-		<servlet-class>epsi.front.LogoutServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	
-	<servlet>
-		<servlet-name>albumPurchaseServlet</servlet-name>
-		<servlet-class>epsi.front.CollectionServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet>
-		<servlet-name>PlatServlet</servlet-name>
-		<servlet-class>epsi.front.PlatServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet>
-		<servlet-name>MenuServlet</servlet-name>
-		<servlet-class>epsi.front.MenuServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	
-	
-	
-	
-	
-	
-	<servlet-mapping>
-		<servlet-name>PlatServlet</servlet-name>
-		<url-pattern>/app/plats</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>MenuServlet</servlet-name>
-		<url-pattern>/app/menus</url-pattern>
-	</servlet-mapping>
-
-	<servlet-mapping>
-		<servlet-name>homeServlet</servlet-name>
-		<url-pattern>/app</url-pattern>
-	</servlet-mapping>
-
-	
-	<servlet-mapping>
-		<servlet-name>loginServlet</servlet-name>
-		<url-pattern>/app/login</url-pattern>
-	</servlet-mapping>
-	
-	<servlet-mapping>
-		<servlet-name>logoutServlet</servlet-name>
-		<url-pattern>/app/logout</url-pattern>
-	</servlet-mapping>
-	
-	
-	<servlet-mapping>
-		<servlet-name>albumPurchaseServlet</servlet-name>
-		<url-pattern>/app/buyalbum</url-pattern>
-	</servlet-mapping>
-	
-	<servlet-mapping>
-		<servlet-name>hello</servlet-name>
-		<url-pattern>/hello</url-pattern>
-	</servlet-mapping>
-	
-	<servlet-mapping>
-  		<servlet-name>default</servlet-name>
-  		<url-pattern>/static/*</url-pattern>
-	</servlet-mapping>
-	
-	<error-page>
-		<error-code>404</error-code>
-		<location>/static/404.html</location>
-	</error-page>
-
+  <servlet-mapping>
+    <servlet-name>CreationClient</servlet-name>
+    <url-pattern>/app/inscription</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PlatServlet</servlet-name>
+    <url-pattern>/app/plats</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MenuServlet</servlet-name>
+    <url-pattern>/app/menus</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>homeServlet</servlet-name>
+    <url-pattern>/app</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>loginServlet</servlet-name>
+    <url-pattern>/app/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>logoutServlet</servlet-name>
+    <url-pattern>/app/logout</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>albumPurchaseServlet</servlet-name>
+    <url-pattern>/app/buyalbum</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>hello</servlet-name>
+    <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/static/*</url-pattern>
+  </servlet-mapping>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/static/404.html</location>
+  </error-page>
 </web-app>

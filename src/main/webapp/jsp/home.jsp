@@ -10,6 +10,7 @@
 <h1>Plat Seul</h1>
 <div class="plat">
 <ul class="media-list">
+
 <%
 	List<Plat> plats = (List<Plat>) request.getAttribute("plats");	
 	
@@ -21,6 +22,9 @@
    						<h4 class="media-heading"><%= plat.getDesignation()  %></h4>
  					</div>
    				</a>
+   				<div>
+<%-- 					<a class="btn btn-default" href="buyalbum?id=<%= album.getId() %>" role="button">Ajouter au panier</a>
+ --%>				</div>
  				
 		</li>
 	<%}%>
@@ -46,4 +50,8 @@
 	<%}%>
 </ul>
 </div>
+
+<a href="/jsp/inscription.jsp">
+	<p>Nouvel utilisateur</p>
+</a>
 <%@include file="footer.jsp" %>

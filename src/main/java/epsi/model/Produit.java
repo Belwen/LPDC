@@ -4,12 +4,17 @@ package epsi.model;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+
 import static javax.persistence.GenerationType.IDENTITY;
+
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -22,6 +27,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "produit", catalog = "bdd_lpdc")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+
 public class Produit implements java.io.Serializable {
 
 	private long idProduit;
