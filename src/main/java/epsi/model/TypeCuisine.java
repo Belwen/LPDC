@@ -31,11 +31,6 @@ public class TypeCuisine implements java.io.Serializable {
 		this.designationTypeCuisine = designationTypeCuisine;
 	}
 
-	public TypeCuisine(String designationTypeCuisine, Set<Plat> plats) {
-		this.designationTypeCuisine = designationTypeCuisine;
-		this.plats = plats;
-	}
-
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id_Type_Cuisine", unique = true, nullable = false)
@@ -54,15 +49,6 @@ public class TypeCuisine implements java.io.Serializable {
 
 	public void setDesignationTypeCuisine(String designationTypeCuisine) {
 		this.designationTypeCuisine = designationTypeCuisine;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeCuisine")
-	public Set<Plat> getPlats() {
-		return this.plats;
-	}
-
-	public void setPlats(Set<Plat> plats) {
-		this.plats = plats;
 	}
 
 }

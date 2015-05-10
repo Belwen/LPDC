@@ -22,9 +22,14 @@
    						<h4 class="media-heading"><%= plat.getDesignation()  %></h4>
  					</div>
    				</a>
-   				<a href="./app/panier">
-     				<p>Panier</p>
+   				
+   				<% if(request.getSession().getAttribute("user") != null){%>
+   				<a href="./app/ajoutPanier">
+     				<button class="btn btn-default">Ajouter au Panier</button>
    				</a>
+   				<%} %>
+   				
+   				
    				<div>
 <%-- 					<a class="btn btn-default" href="buyalbum?id=<%= album.getId() %>" role="button">Ajouter au panier</a>
  --%>				</div>

@@ -21,7 +21,7 @@ public class LoginServlet extends HttpServlet{
 	
 	@Override
 	public void init() throws ServletException {
-		System.out.println("init: login artist servlet");
+		System.out.println("init: login  servlet");
 		super.init();
 	}
 	

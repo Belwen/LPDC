@@ -65,7 +65,7 @@ public class Plat implements java.io.Serializable {
 		this.idProduit = idProduit;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@PrimaryKeyJoinColumn
 	public Produit getProduit() {
 		return this.produit;
@@ -75,7 +75,7 @@ public class Plat implements java.io.Serializable {
 		this.produit = produit;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_Type_Cuisine", nullable = false)
 	public TypeCuisine getTypeCuisine() {
 		return this.typeCuisine;

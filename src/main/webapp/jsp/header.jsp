@@ -67,6 +67,9 @@
 			%>
 				<p> Connecté en tant que <%=user.getNom() + " " + user.getPrenom()%>
 				<a href="/app/logout">(se déconnecter)</a></p>
+				<a href="./app/panier">
+     				<button class="btn btn-default">Panier</button>
+   				</a>
 			<%
 				}
 			%> 
