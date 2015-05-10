@@ -55,7 +55,7 @@ public class Panier implements java.io.Serializable {
 		this.idPanier = idPanier;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_User", nullable = false)
 	public User getUser() {
 		return this.user;
@@ -66,7 +66,7 @@ public class Panier implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "dateTime", nullable = false, length = 19)
+	@Column(name = "dateTime", nullable = true, length = 19)
 	public Date getDateTime() {
 		return this.dateTime;
 	}

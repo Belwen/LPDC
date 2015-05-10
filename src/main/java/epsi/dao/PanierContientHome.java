@@ -3,10 +3,16 @@ package epsi.dao;
 // Generated 6 mai 2015 11:18:39 by Hibernate Tools 3.4.0.CR1
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
+import epsi.exception.UserNotFoundException;
+import epsi.model.Panier;
 import epsi.model.PanierContient;
 import epsi.model.PanierContientId;
+import epsi.model.User;
 
 /**
  * Home object for domain model class PanierContient.
@@ -52,5 +58,23 @@ public class PanierContientHome {
 		} catch (RuntimeException re) {
 			throw re;
 		}
+	}
+	
+	public PanierContient findByPanier(Panier panier) throws UserNotFoundException{
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
+		EntityManager em = emf.createEntityManager();
+
+		try{
+			PanierContient PC = (PanierContient) em.createQuery("Select p FROM PanierContient p WHERE p.panier=:id")
+							.setParameter("id", panier).getSingleResult();
+			return PC;
+			
+		}catch(NoResultException ex){
+			throw new UserNotFoundException();
+		}finally{
+			em.close();
+			emf.close();
+		}		
+
 	}
 }

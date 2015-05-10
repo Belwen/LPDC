@@ -47,7 +47,7 @@ public class PanierContient implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_Produits", nullable = false, insertable = false, updatable = false)
 	public Produit getProduit() {
 		return this.produit;
@@ -57,7 +57,7 @@ public class PanierContient implements java.io.Serializable {
 		this.produit = produit;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_Panier", nullable = false, insertable = false, updatable = false)
 	public Panier getPanier() {
 		return this.panier;
