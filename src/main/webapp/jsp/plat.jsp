@@ -6,6 +6,7 @@
 
 <%
 Plat plat = (Plat) request.getAttribute("plat");
+String typecuisine = (String) request.getAttribute("typecuis");
 
 %>
 <h2><%= plat.getDescription() %> </h2>
@@ -19,6 +20,7 @@ Plat plat = (Plat) request.getAttribute("plat");
 %>
 
 <h3>Prix : <%= plat.getPrix() %> Euro</h3>
+<h3>Type de cuisine : <%= typecuisine %> </h3>
 
 
 <%@include file="footer.jsp" %>

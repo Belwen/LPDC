@@ -3,8 +3,12 @@ package epsi.dao;
 // Generated 6 mai 2015 11:18:39 by Hibernate Tools 3.4.0.CR1
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
+import epsi.model.Menu;
 import epsi.model.TypeCuisine;
 
 /**
@@ -13,10 +17,63 @@ import epsi.model.TypeCuisine;
  * @author Hibernate Tools
  */
 public class TypeCuisineHome {
+	
+	public TypeCuisineHome(){}
 
 
 	@PersistenceContext
 	private EntityManager entityManager;
+
+	public void create(TypeCuisineHome tch){
+		// Get entity manager
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
+		EntityManager em = emf.createEntityManager();
+		
+		//Get transaction
+		EntityTransaction transaction = em.getTransaction();
+		transaction.begin();
+		
+		em.persist(tch);
+		transaction.commit();
+		
+		//Close entity manager
+		em.close();
+		emf.close();
+	}
+	
+	public void update(TypeCuisineHome tch){
+		// Get entity manager
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
+		EntityManager em = emf.createEntityManager();
+		
+		//Get transaction
+		EntityTransaction transaction = em.getTransaction();
+		transaction.begin();
+		
+		em.merge(tch);
+		transaction.commit();
+		
+		//Close entity manager
+		em.close();
+		emf.close();
+	}
+	
+	public void delete(TypeCuisineHome tch){
+		// Get entity manager
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
+		EntityManager em = emf.createEntityManager();
+				
+		//Get transaction
+		EntityTransaction transaction = em.getTransaction();
+		transaction.begin();
+				
+		em.remove(tch);
+		transaction.commit();
+				
+		//Close entity manager
+		em.close();
+		emf.close();
+	}
 
 	public void persist(TypeCuisine transientInstance) {
 		try {

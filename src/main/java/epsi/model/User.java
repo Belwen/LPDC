@@ -136,7 +136,7 @@ public class User implements java.io.Serializable {
 		this.password = password;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	public Set<Panier> getPaniers() {
 		return this.paniers;
 	}
@@ -145,7 +145,7 @@ public class User implements java.io.Serializable {
 		this.paniers = paniers;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	public Set<Commande> getCommandes() {
 		return this.commandes;
 	}
