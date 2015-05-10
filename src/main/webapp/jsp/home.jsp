@@ -22,6 +22,9 @@
    						<h4 class="media-heading"><%= plat.getDesignation()  %></h4>
  					</div>
    				</a>
+   				<a href="./app/panier">
+     				<p>Panier</p>
+   				</a>
    				<div>
 <%-- 					<a class="btn btn-default" href="buyalbum?id=<%= album.getId() %>" role="button">Ajouter au panier</a>
  --%>				</div>
@@ -51,7 +54,5 @@
 </ul>
 </div>
 
-<a href="/jsp/inscription.jsp">
-	<p>Nouvel utilisateur</p>
-</a>
+
 <%@include file="footer.jsp" %>

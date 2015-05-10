@@ -39,7 +39,15 @@
     <servlet-name>CreationClient</servlet-name>
     <servlet-class>epsi.front.CreationClientServlet</servlet-class>
   </servlet>
-
+  <servlet>
+    <servlet-name>PanierServlet</servlet-name>
+    <servlet-class>epsi.front.PanierServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>PanierServlet</servlet-name>
+    <url-pattern>/app/panier</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>CreationClient</servlet-name>
     <url-pattern>/app/inscription</url-pattern>
