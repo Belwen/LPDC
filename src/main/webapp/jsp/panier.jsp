@@ -28,13 +28,8 @@ Plat plat = (Plat) request.getAttribute("plat");
             out.println("Plât Froid");
 %>
 
-
-
-<<<<<<< HEAD
+s
 <p>Panier :)</p>
 <% User user  = (User) request.getSession().getAttribute("user");%>
 <p>User id :</p><%=user.getIdUser()%>
 <%@include file="footer.jsp" %>
-=======
-<%@include file="footer.jsp" %>
->>>>>>> 2f1a6b260da019a89794f84ca10a6ce3411bf10c

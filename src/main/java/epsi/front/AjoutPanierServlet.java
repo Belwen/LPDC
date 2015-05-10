@@ -33,14 +33,10 @@ public class AjoutPanierServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 String nom = request.getParameter( CHAMP_NOM );
+		 	String nom = request.getParameter( CHAMP_NOM );
 	        String prenom = request.getParameter( CHAMP_PRENOM );
 	        String adresse = request.getParameter( CHAMP_ADRESSE );
-	        String telephone = request.getParameter( CHAMP_TELEPHONE );
-	        String email = request.getParameter( CHAMP_EMAIL );
-	        String mdp = request.getParameter( CHAMP_MDP );
-	        String mdp2 = request.getParameter( CHAMP_MDP2 );
-	        String datenaiss = request.getParameter( CHAMP_DATENAISS );
+
 
 	        String message;
 	        boolean erreur;
