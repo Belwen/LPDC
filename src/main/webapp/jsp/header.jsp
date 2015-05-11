@@ -5,6 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link href='http://fonts.googleapis.com/css?family=Montserrat|Sacramento' rel='stylesheet' type='text/css'>
 	<script src="/static/js/jquery.js" type="text/javascript"></script>
 	<script src="/static/js/bootstrap.js" type="text/javascript"></script>
 	<link href="/static/css/bootstrap.css" rel="stylesheet"/>
@@ -13,16 +14,19 @@
 	<title>La Pate de cannard</title>
 </head>
 <body>
+	<header>
+        <nav>
+            <div class="logo"><img src="/static/images/lpdc_logo2.png" alt=""></div>
+            <ul>
+                <a href="#"><li>Accueil</li></a>
+                <a href="#"><li>Catalogue</li></a>
+                <a href="#"><li><img src="/static/images/cart_menu.png" alt=""></li></a>
+            </ul>
+        </nav>
+    </header>
 	<div class="container">
 	
 		<div class="header" style="height: 80px">
-			<div class="pull-left">
-
-				<h1>La pate de cannard !</h1>
-				<h5>Faites vous livrer!</h5>
-
-			</div>
-			<div class="pull-right" style="margin-top:20px">
 			
 			<%
 				if(request.getSession().getAttribute("user") == null){												
@@ -71,7 +75,6 @@
 			%> 
 			<p class="info">${ message }</p>
 			
-			</div>
 		</div>
 		
 		<hr />

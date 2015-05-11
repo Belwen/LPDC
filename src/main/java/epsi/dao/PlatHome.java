@@ -110,6 +110,7 @@ public class PlatHome {
 		emf.close();
 		return plats;
 	}
+	
 	public Plat findByDesignation(String designation) throws PlatNotFoundException{
 		// Get entity manager
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
