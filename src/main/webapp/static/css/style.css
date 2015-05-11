@@ -193,16 +193,15 @@ section.container > .product-list .product .add-to-cart{
 	-moz-transition: .2s ease-in-out;
 	-o-transition: .2s ease-in-out;
 }
-section.container > .product-list .product .add-to-cart img{
+section.container > .product-list .product .add-to-cart button{
 	position: absolute;
+	width: 80px;
 	top: 50%;
 	-webkit-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
-	left: 0; right: 0;
+	right: 0; left: 0;
 	margin: auto;
-}
-section.container > .product-list .product .add-to-cart button{
 	background: none;
 	border: none;
 }
