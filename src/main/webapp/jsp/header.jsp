@@ -16,65 +16,47 @@
 <body>
 	<header>
         <nav>
-            <div class="logo"><img src="/static/images/lpdc_logo2.png" alt=""></div>
+            <div class="logo"><a href="/app"><img src="/static/images/lpdc_logo2.png" alt=""></a></div>
             <ul>
-                <a href="#"><li>Accueil</li></a>
-                <a href="#"><li>Catalogue</li></a>
-                <a href="#"><li><img src="/static/images/cart_menu.png" alt=""></li></a>
+                <a href="/app/panier"><li><img src="/static/images/cart_menu.png" alt=""></li></a>
             </ul>
         </nav>
     </header>
-	<div class="container">
-	
-		<div class="header" style="height: 80px">
-			
-			<%
-				if(request.getSession().getAttribute("user") == null){												
-			%>
-			
-				<form class="form-inline" action="/app/login" method="post">
-					
-					<div class="form-group">
-					  <label class="sr-only" for="exampleInputEmail3">Email address</label>
-					  <input name="email" type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
-					</div>
-					
-					<div class="form-group">
-					  <label class="sr-only" for="exampleInputPassword3">Password</label>
-					  <input name="password" type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
-					</div>
-					
-					 <div class="checkbox">
-					   <label>
-					     <input name="rememberme" type="checkbox"> Remember me
-					   </label>
-					 </div>
-		  			
-		  			 <button type="submit" class="btn btn-default">Sign in</button>
-		  			 
-				
-				</form>
-				<a href="/jsp/inscription.jsp">
-					<button class="btn btn-default">S'inscrire</button>
-				</a>
-			<%
-					if(request.getAttribute("authenticationError") != null){
-						%> <p style="color:red;"> Nom d'utilisateur ou mot de passe incorrect </p> <%
-					}
-				}
-				else{
-					User user  = (User) request.getSession().getAttribute("user");
-			%>
-				<p> Connecté en tant que <%=user.getNom() + " " + user.getPrenom()%>
-				<a href="/app/logout">(se déconnecter)</a></p>
-				<a href="./app/panier">
-     				<button class="btn btn-default">Panier</button>
-   				</a>
-			<%
-				}
-			%> 
-			<p class="info">${ message }</p>
-			
+    <%
+		if(request.getSession().getAttribute("user") == null){												
+	%>
+    <div class="login-form">
+        <form action="/app/login" method="post">
+            <div class="login-form-group">
+                <label for="email">E-mail</label>
+                <input name="email" type="email" id="email" placeholder="Enter email">
+            </div>
+
+            <div class="login-form-group">
+                <label for="password">Password</label>
+                <input name="password" type="password" id="password" placeholder="Password">
+            </div>
+            <div class="login-form-group"><button type="submit" class="btn-login">Sign in</button></div>
+        </form>
+    </div>
+    <%
+		}
+		else{
+			User user  = (User) request.getSession().getAttribute("user");
+	%>
+		<div class="user-logged-in">
+			<p> Connecté en tant que <%=user.getNom() + " " + user.getPrenom()%>
+			<a href="/app/logout">(se déconnecter)</a></p>
 		</div>
-		
-		<hr />
+	<%
+		}
+	%> 
+	<section id="header">
+        <div class="jumbotron"></div>
+        <div class="hero">
+            <h2>Bienvenue sur La Pâte de Canard</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt enim et ultricies imperdiet. Nulla facilisi. Pellentesque tortor est, ullamcorper et suscipit in, laoreet vel velit.</p>
+            <a href="#" class="btn btn-hero">Parcourir</a>
+        </div>
+    </section>
+	

@@ -48,6 +48,39 @@ header nav > ul > a > li{
 header nav > ul > a > li > img{
 	width: 30px;
 }
+.login-form{
+	position: absolute;
+	z-index: 100;
+	right: 35px;
+	top: 135px;
+	background: #ae895d;
+	padding: 10px 20px;
+}
+.login-form label{
+	display: block;
+	font-size: 9px;
+	text-transform: uppercase;
+}
+.login-form .login-form-group{
+	display: inline-block;
+}
+.login-form input{
+	font-size: 14px;
+	padding: 3px 8px;
+}
+.login-form button.btn-login{
+	display: inline-block;
+	background: #2d2d2d;
+	border: none;
+	color: #fff;
+	font-size: 14px;
+	padding: 5px 15px;
+}
+.user-logged-in{
+	position: absolute;
+	top: 3px; right: 20px;
+	font-size: 14px;
+}
 section{
 	position: relative;
 	width: 100%;
@@ -61,10 +94,10 @@ section#header > .jumbotron{
 }
 section#header > .hero{
 	position: absolute;
-	top: 30%;
-	-webkit-transform: translateY(-30%);
-	-ms-transform: translateY(-30%);
-	transform: translateY(-30%);
+	top: 45%;
+	-webkit-transform: translateY(-45%);
+	-ms-transform: translateY(-45%);
+	transform: translateY(-45%);
 	left: 10%; right: 0; bottom: 0;
 	box-sizing: border-box;
 	padding: 20px;
@@ -171,6 +204,60 @@ section.container > .product-list .product > .add-to-cart img{
 }
 section.container > .product-list .product:hover > .add-to-cart{
 	opacity: 1;
+}
+
+section.container > .product-infos{
+	overflow: hidden;
+	margin: 20px 0;
+}
+section.container > .product-infos .product-image{
+	position: relative;
+	float: left;
+	margin: 0 20px;
+	background-size: cover;
+	width: 250px;
+	min-height: 250px;
+	box-shadow: 0px 0px 8px rgba(85,85,85,0.3);
+}
+section.container > .product-infos .product-image .product-price{
+	position: absolute;
+	right: -12px;
+}
+section.container > .product-infos .product-image .product-price div{
+	position: absolute;
+	color: #fff;
+	width: 77px;
+	text-align: center;
+	top: 30px; right: -10px;
+	text-shadow: 0px 0px 6px rgba(85,85,85,0.6);
+}
+section.container > .product-infos h2{
+	margin: 0;
+}
+section.container > .product-infos .type-cuisine{
+	color: #aecd53;
+}
+section.container > .product-infos .nb-personnes,
+section.container > .product-infos .plat-chaud{
+	display: block;
+	font-size: 14px;
+	color: #4b4b4b;
+}
+section.container > .product-infos a{
+	display: inline-block;
+	margin: 20px 0;
+	background: #aecd53;
+	padding: 6px 12px;
+	color: #fff;
+	text-decoration: none;
+	cursor: pointer;
+	transition: .2s ease-in-out;
+	-webkit-transition: .2s ease-in-out;
+	-moz-transition: .2s ease-in-out;
+	-o-transition: .2s ease-in-out;
+}
+section.container > .product-infos a:hover{
+	background: #a0c345;
 }
 
 footer{

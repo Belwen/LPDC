@@ -30,6 +30,7 @@ public class Plat implements java.io.Serializable {
 	private Float prix;
 	private String designation;
 	private String description;
+	private String posterPath;
 
 	public Plat() {
 	}
@@ -128,6 +129,15 @@ public class Plat implements java.io.Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	@Column(name = "poster_path", length = 250)
+	public String getPosterPath(){
+		return this.posterPath;
+	}
+	
+	public void setPosterPath(String posterPath){
+		this.posterPath = posterPath;
 	}
 
 }

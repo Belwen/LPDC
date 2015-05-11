@@ -10,7 +10,8 @@
 <%@include file="header.jsp" %>
 <% Panier lepanier = (Panier) request.getAttribute("panier"); %>
 
-<h1>Les paniers</h1>
+<section class="container">
+<h1>Panier</h1>
 <h2><%= lepanier.getIdPanier() %></h2>
 
 <%
@@ -18,20 +19,28 @@ List<Plat> plats = (List<Plat>) request.getAttribute("plats");
 
 for(Plat plat: plats){
 %>
-<h2><%= plat.getDesignation() %> </h2>
-<h2><%= plat.getDescription() %> </h2>
-<h3><p>Nombre de Personne : <%= plat.getNbPersonne() %> </p></h3>
-<%
+	<div class="product-infos">
+        <div class="product-image" style="background-image: url('<%= plat.getPosterPath() %>')">
+            <div class="product-price">
+                <img src="/static/images/price.png" alt="">
+                <div><%= plat.getPrix() %>&#x20AC;</div>
+            </div>
+        </div>
+        <h2><%= plat.getDesignation() %></h2>
+        <em class="type-cuisine">Cuisine Française</em>
+        <p><%= plat.getDescription() %></p>
+        <em class="nb-personnes">Pour <%= plat.getNbPersonne() %> personne</em>
+        <em class="plat-chaud">
+        <% if(plat.isEstChaud() == true)
+        	out.println("Plat Chaud");
+       	   else if (plat.isEstChaud() == false)
+       		out.println("Plat Froid"); %>
+        </em>
+        <a href="#">Ajouter au panier</a>
+    </div>
+<% } %>
 
-        if(plat.isEstChaud() == true)
-            out.println("Plât Chaud");
-        else if (plat.isEstChaud() == false)
-            out.println("Plât Froid");
-}
-%>
-
-s
-<p>Panier :)</p>
 <% User user  = (User) request.getSession().getAttribute("user");%>
 <p>User id :</p><%=user.getIdUser()%>
+</section>
 <%@include file="footer.jsp" %>

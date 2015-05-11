@@ -8,37 +8,31 @@
     pageEncoding="ISO-8859-1"%>
 <%@include file="header.jsp" %>
 
-<h1>Plat Seul</h1>
-<div class="plat">
-<ul class="media-list">
+<section class="container">
+        <div class="product-list">
+        <h1>Liste des plats</h1>
 
 <%
 	List<Plat> plats = (List<Plat>) request.getAttribute("plats");	
 	
 	for(Plat plat: plats){
 		%>
-		<li class="media">
-				<a href="./app/plats?id=<%= plat.getIdProduit()%>">
-     				<div class="media-body">
-   						<h4 class="media-heading"><%= plat.getDesignation()  %></h4>
- 					</div>
-   				</a>
-   				
-   				<% if(request.getSession().getAttribute("user") != null){%>
-   				<a href="./app/ajoutPanier?id=<%= plat.getIdProduit()%>">
-     				<button class="btn btn-default">Ajouter au Panier</button>
-   				</a>
-   				<%} %>
-   				
-   				
-   				<div>
-<%-- 					<a class="btn btn-default" href="buyalbum?id=<%= album.getId() %>" role="button">Ajouter au panier</a>
- --%>				</div>
- 				
-		</li>
+		<div class="product">
+            <div class="product-image" style="background-image: url('<%= plat.getPosterPath() %>')"></div>
+            <div class="product-name"><a href="/app/plats?id=<%= plat.getIdProduit()%>"><%= plat.getDesignation()  %></a></div>
+            <div class="product-price">
+                <img src="/static/images/price.png" alt="">
+                <div><%= plat.getPrix() %>&#x20AC;</div>
+            </div>
+            <% if(request.getSession().getAttribute("user") != null){%>
+            <div class="add-to-cart">
+                <a href="/app/ajoutPanier?id=<%= plat.getIdProduit()%>"><img src="/static/images/cart.png" alt=""></a>
+            </div>
+            <%} %>
+        </div>
 	<%}%>
-</ul>
 </div>
+</section>
 
 <h1>Les menus</h1>
 <div class="menu">
@@ -49,7 +43,7 @@
 	for(Menu menu: menus){
 		%>
 		<li class="media">
-				<a href="./app/menus?id=<%= menu.getIdProduit()%>">
+				<a href="/app/menus?id=<%= menu.getIdProduit()%>">
      				<div class="media-body">
    						<h4 class="media-heading"><%= menu.getDesignation()  %></h4>
  					</div>

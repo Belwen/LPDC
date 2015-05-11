@@ -9,18 +9,27 @@ Plat plat = (Plat) request.getAttribute("plat");
 String typecuisine = (String) request.getAttribute("typecuis");
 
 %>
-<h2><%= plat.getDescription() %> </h2>
-<h3><p>Nombre de Personne : <%= plat.getNbPersonne() %> </p></h3>
-<%
-
-        if(plat.isEstChaud() == true)
-            out.println("Plât Chaud");
-        else if (plat.isEstChaud() == false)
-            out.println("Plât Froid");
-%>
-
-<h3>Prix : <%= plat.getPrix() %> Euro</h3>
-<h3>Type de cuisine : <%= typecuisine %> </h3>
+<section class="container">
+	<div class="product-infos">
+	    <div class="product-image" style="background-image: url('<%= plat.getPosterPath() %>')">
+	        <div class="product-price">
+	            <img src="/static/images/price.png" alt="">
+	            <div><%= plat.getPrix() %>&#x20AC;</div>
+	        </div>
+	    </div>
+	    <h2><%= plat.getDesignation() %></h2>
+	    <em class="type-cuisine">Cuisine <%= typecuisine %></em>
+	    <p><%= plat.getDescription() %></p>
+	    <em class="nb-personnes">Pour <%= plat.getNbPersonne() %> personne</em>
+	    <em class="plat-chaud">
+	    <% if(plat.isEstChaud() == true)
+	    	out.println("Plat Chaud");
+	   	   else if (plat.isEstChaud() == false)
+	   		out.println("Plat Froid"); %>
+	    </em>
+	    <a href="/app/ajoutPanier?id=<%= plat.getIdProduit()%>">Ajouter au panier</a>
+	</div>
+</section>
 
 
 <%@include file="footer.jsp" %>
