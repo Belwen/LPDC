@@ -26,6 +26,7 @@ public class Traiteur implements java.io.Serializable {
 	private String nomTraiteur;
 	private String adresse;
 	private String telTraiteur;
+	private String posterPath;
 	private Set<Produit> produits = new HashSet<Produit>(0);
 
 	public Traiteur() {
@@ -81,6 +82,15 @@ public class Traiteur implements java.io.Serializable {
 
 	public void setTelTraiteur(String telTraiteur) {
 		this.telTraiteur = telTraiteur;
+	}
+	
+	@Column(name = "poster_path", nullable = false, length = 250)
+	public String getPosterPath(){
+		return this.posterPath;
+	}
+	
+	public void setPosterPath(String posterPath){
+		this.posterPath = posterPath;
 	}
 
 	@ManyToMany(fetch = FetchType.EAGER)

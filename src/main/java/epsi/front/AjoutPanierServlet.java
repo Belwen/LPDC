@@ -33,7 +33,7 @@ public class AjoutPanierServlet extends HttpServlet {
 	public static final String CHAMP_NOMBRE = "nbre";
 	public static final String ATT_MESSAGE = "message";
        
-	public static final String VUE = "/app";
+	public static final String VUE = "/app/catalogue";
 	
     public AjoutPanierServlet() {
         super();

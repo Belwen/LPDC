@@ -4,21 +4,26 @@
     pageEncoding="utf-8"%>
 <%@include file="header.jsp" %>
 
-
+<section class="container" id="catalogue">
+	<h1>Nos Traiteurs</h1>
 <%
 List<Traiteur> lestraiteurs =(List<Traiteur>) request.getAttribute("traiteurs");
 
 for(Traiteur traiteur: lestraiteurs){
 %>
-<h2><%= traiteur.getNomTraiteur() %> </h2>
-<h2><%= traiteur.getTelTraiteur() %> </h2>
-<h2><%= traiteur.getAdresse() %> </h2>
 
-<a href="/app/plattraiteur?id=<%= traiteur.getIdTraiteur()%>"><button></button> Voir les plats</a>
+<div class="traiteurs-list">
+    <div class="traiteur">
+        <div class="traiteur-image" style="background-image: url('<%= traiteur.getPosterPath() %>')"></div>
+        <div class="traiteur-name"><a href="/app/plattraiteur?id=<%= traiteur.getIdTraiteur()%>"><%= traiteur.getNomTraiteur() %></a></div>
+        <div class="traiteur-address"><%= traiteur.getAdresse() %></div>
+        <div class="traiteur-telephone"><%= traiteur.getTelTraiteur() %></div>
+    </div>
+</div>
 <%
 
 }
 %>
-
+</section>
 
 <%@include file="footer.jsp" %>

@@ -455,6 +455,35 @@ section.container > .catalogue-list .product-price{
 	margin-top: 10px;
 }
 
+section.container > .traiteurs-list .traiteur{
+	padding-bottom: 20px;
+	margin-top: 20px;
+	border-bottom: 1px solid #efefef;
+}
+section.container > .traiteurs-list .traiteur:last-child{
+	border: none;
+}
+section.container > .traiteurs-list .traiteur-image{
+	float: left;
+	margin-right: 20px;
+	width: 100px;
+	min-height: 100px;
+	background-size: cover;
+}
+section.container > .traiteurs-list .traiteur-name{
+	padding-top: 10px;
+}
+section.container > .traiteurs-list .traiteur-name a{
+	font-size: 20px;
+	color: #aecd53;
+	text-decoration: none;
+}
+section.container > .traiteurs-list .traiteur-address,
+section.container > .traiteurs-list .traiteur-telephone{
+	font-size: 14px;
+	color: #2C2C2C;
+}
+
 footer{
 	background: #272727;
 	color: #fff;

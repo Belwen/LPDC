@@ -57,6 +57,4 @@ for(PanierContient plat: plats){
 	</table>
 </section>
 
-<% User user  = (User) request.getSession().getAttribute("user");%>
-<p>User id :</p><%=user.getIdUser()%>
 <%@include file="footer.jsp" %>
