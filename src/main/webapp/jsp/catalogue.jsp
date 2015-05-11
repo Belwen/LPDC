@@ -24,7 +24,7 @@
             <div class="radio">
               <label>
                 <input type="radio" name="type-cuisine" id="type-cuisine1" value="1" >
-                Française
+                Francaise
               </label>
             </div>
 
@@ -54,7 +54,7 @@
               </label>
             </div>
 
-            <h3>Température</h3>
+            <h3>Temperature</h3>
             <div class="radio">
               <label>
                 <input type="radio" name="temperature" id="temperature" value="" checked>

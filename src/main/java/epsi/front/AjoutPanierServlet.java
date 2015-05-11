@@ -66,6 +66,7 @@ public class AjoutPanierServlet extends HttpServlet {
 				        int foo = Integer.parseInt(request.getParameter("id"));
 				        long foo2 = (long) foo;
 				        Produit prod = prodDao.findById(foo2);
+
 				        
 				        pc.setProduit(prod);
 				        

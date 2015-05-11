@@ -14,6 +14,7 @@ import epsi.exception.UserNotFoundException;
 import epsi.model.Panier;
 import epsi.model.PanierContient;
 import epsi.model.PanierContientId;
+import epsi.model.Produit;
 import epsi.model.User;
 
 /**
@@ -81,6 +82,24 @@ public class PanierContientHome {
 		try{
 			PanierContient PC = (PanierContient) em.createQuery("Select p FROM PanierContient p WHERE p.panier=:id")
 							.setParameter("id", panier).getSingleResult();
+			return PC;
+			
+		}catch(NoResultException ex){
+			throw new UserNotFoundException();
+		}finally{
+			em.close();
+			emf.close();
+		}		
+
+	}
+	public PanierContient findByPanierProduit(Panier panier, Produit produit) throws UserNotFoundException{
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
+		EntityManager em = emf.createEntityManager();
+
+		try{
+			PanierContient PC = (PanierContient) em.createQuery("Select p FROM PanierContient p WHERE p.panier=:id AND p.produit=:id_prod")
+							.setParameter("id", panier)
+							.setParameter("id_prod", produit).getSingleResult();
 			return PC;
 			
 		}catch(NoResultException ex){
