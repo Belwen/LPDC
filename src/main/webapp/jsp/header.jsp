@@ -56,7 +56,7 @@
         <div class="jumbotron"></div>
         <div class="hero">
             <h2>Bienvenue sur La Pâte de Canard</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt enim et ultricies imperdiet. Nulla facilisi. Pellentesque tortor est, ullamcorper et suscipit in, laoreet vel velit.</p>
+            <p>La Pâte de Canard est devenu en 23 ans un leader incontournable de la vente en ligne produits issus des meilleurs traiteurs. Retrouvez un catalogue riche en produits frais et de qualité.</p>
             <a href="#" class="btn btn-hero">Parcourir</a>
         </div>
     </section>
