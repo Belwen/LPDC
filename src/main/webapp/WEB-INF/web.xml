@@ -47,8 +47,10 @@
     <servlet-name>AjoutPanierServlet</servlet-name>
     <servlet-class>epsi.front.AjoutPanierServlet</servlet-class>
   </servlet>
-  
-  
+  <servlet-mapping>
+    <servlet-name>PanierServlet</servlet-name>
+    <url-pattern>/app/panier</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AjoutPanierServlet</servlet-name>
     <url-pattern>/app/ajoutPanier</url-pattern>

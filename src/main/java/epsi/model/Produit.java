@@ -138,7 +138,7 @@ public class Produit implements java.io.Serializable {
 		this.traiteurs = traiteurs;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "produit")
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "produit")
 	public Plat getPlat() {
 		return this.plat;
 	}
