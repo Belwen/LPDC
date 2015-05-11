@@ -20,6 +20,7 @@
 	            <th>Prix unitaire</th>
 	            <th>Quantité</th>
 	            <th>Total</th>
+	            <th>Actions</th>
 	        </tr>
 	    </thead>
 	    <tbody>
@@ -38,17 +39,14 @@ for(PanierContient plat: plats){
 			</td>
 			
 			<td align="center" width="120px"><span class="price"><%= plat.getProduit().getPlat().getPrix() %>&#x20AC;</span></td>
-			<td align="center" width="150px">
+			<td align="center" width="100px">
 				<div class="quantite">
-					<div class="remove"><a href="#">-</a></div>
 					<div class="number"><%= plat.getNombreProduit() %></div>
-					<div class="add"><a href="#">+</a></div>
-					
 				</div>
 			</td>
 			<td align="center"><span class="total-price"></span>&#x20AC;</td>
 			<form method="post" action="/app/supprimePanier?id=<%= plat.getProduit().getIdProduit()%>">
-			<td><button><p>Supprimer</p></button></td>
+			<td align="center"><button class="remove-item-cart"><img src="/static/images/delete.png" width="20px" alt="Delete"></button></td>
 			</form>
 		</tr>
 <% } %>
@@ -57,6 +55,7 @@ for(PanierContient plat: plats){
 			<tr>
             	<td colspan="4"></td>
             	<td align="center"><span class="total-cart"></span>&#x20AC;</td>
+            	<td></td>
             </tr>
         </tfoot>
 	</table>

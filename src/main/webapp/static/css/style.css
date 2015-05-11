@@ -484,6 +484,14 @@ section.container > .traiteurs-list .traiteur-telephone{
 	color: #2C2C2C;
 }
 
+.remove-item-cart{
+	background: none;
+	border: none;
+}
+.remove-item-cart:focus{
+	outline: none;
+}
+
 footer{
 	background: #272727;
 	color: #fff;
