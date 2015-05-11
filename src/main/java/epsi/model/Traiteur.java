@@ -83,7 +83,7 @@ public class Traiteur implements java.io.Serializable {
 		this.telTraiteur = telTraiteur;
 	}
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "fabrique", catalog = "bdd_lpdc", joinColumns = { @JoinColumn(name = "id_Traiteur", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "id_Produit", nullable = false, updatable = false) })
 	public Set<Produit> getProduits() {
 		return this.produits;

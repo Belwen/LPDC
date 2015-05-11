@@ -12,71 +12,7 @@
 <%@include file="header.jsp" %>
 
 <section class="container">
-		<div class="sidebar">
-			<form action="/app/catalogue" method="post">
-            <h3>Type de cuisine</h3>
-            <div class="radio">
-              <label>
-                <input type="radio" name="type-cuisine" id="type-cuisine0" value="" checked>
-                 -
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="type-cuisine" id="type-cuisine1" value="1" >
-                Française
-              </label>
-            </div>
-
-            <h3>Personnes</h3>
-            <div class="radio">
-              <label>
-                <input type="radio" name="nb-personnes" id="type-cuisine0" value="" checked>
-                -
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="nb-personnes" id="nb-personnes1" value="1">
-                1 personne
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="nb-personnes" id="nb-personnes2" value="2">
-                2 personnes
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="nb-personnes" id="nb-personnes3" value="3">
-                3 personnes
-              </label>
-            </div>
-
-            <h3>Température</h3>
-            <div class="radio">
-              <label>
-                <input type="radio" name="temperature" id="temperature" value="" checked>
-                -
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="temperature" id="chaud" value="1">
-                Chaud
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="temperature" id="froid" value="0">
-                Froid
-              </label>
-            </div>
-            <input type="submit">
-            </form>
-        </div>
-        <div class="catalogue-list">
+        <div class="product-list">
         <h1>Liste des plats</h1>
         <p class="info">${ message }</p>
 
@@ -88,11 +24,16 @@
 		%>
 		<div class="product">
             <div class="product-image" style="background-image: url('<%= plat.getPosterPath() %>')"></div>
+            <div class="product-name"><a href="/app/plats?id=<%= plat.getIdProduit()%>"><%= plat.getDesignation()  %></a></div>
+            <div class="product-price">
+                <img src="/static/images/price.png" alt="">
+                <div><%= plat.getPrix() %>&#x20AC;</div>
+            </div>
             <form method="post" action="/app/ajoutPanier?id=<%= plat.getIdProduit()%>">
 				<input type="hidden" class="nbre" id="nbre" name="nbre" value="1" />
 	            <% if(request.getSession().getAttribute("user") != null && !panier.contains(plat.getIdProduit())){%>
 	            <div class="add-to-cart">
-	                <a href="/app/ajoutPanier?id=<%= plat.getIdProduit()%>"><button>Ajouter au panier</button></a>
+	                <a href="/app/ajoutPanier?id=<%= plat.getIdProduit()%>"><button><img src="/static/images/cart.png" alt=""></button></a>
 	                <div class="quantite">
                         <div class="remove"><a href="#" class="remove-quantite">-</a></div>
                         <div class="number">1</div>
@@ -101,16 +42,30 @@
 	            </div>
 	            <% } %>
             </form>
-            <div class="product-name"><a href="/app/plats?id=<%= plat.getIdProduit()%>"><%= plat.getDesignation()  %></a></div>
-            <div class="product-description"><%= plat.getDescription() %></div>
-            <div class="product-price">
-                <img src="images/price.png" alt="">
-                <div><%= plat.getPrix() %>&#x20AC;</div>
-            </div>
         </div>
 	<%}%>
 </div>
 </section>
+
+<h1>Les menus</h1>
+<div class="menu">
+<ul class="media-list">
+<%
+	List<Menu> menus = (List<Menu>) request.getAttribute("menus");	
+	
+	for(Menu menu: menus){
+		%>
+		<li class="media">
+				<a href="/app/menus?id=<%= menu.getIdProduit() %>">
+     				<div class="media-body">
+   						<h4 class="media-heading"><%= menu.getDesignation()  %></h4>
+ 					</div>
+   				</a>
+ 				
+		</li>
+	<%}%>
+</ul>
+</div>
 
 
 

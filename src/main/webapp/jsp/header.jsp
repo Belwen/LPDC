@@ -19,7 +19,7 @@
         <nav>
             <div class="logo"><a href="/app"><img src="/static/images/lpdc_logo2.png" alt=""></a></div>
             <ul>
-            	<a href="/app/catalogue"><li>Catalogue</li></a>
+            	<a href="#"><li>Catalogue</li></a>
             	<a href="/app/traiteur"><li>Traiteurs</li></a>
                 <a href="/app/panier"><li><img src="/static/images/cart_menu.png" alt=""></li></a>
             </ul>
@@ -62,7 +62,7 @@
         <div class="hero">
             <h2>Bienvenue sur La Pâte de Canard</h2>
             <p>La Pâte de Canard est devenu en 23 ans un leader incontournable de la vente en ligne produits issus des meilleurs traiteurs. Retrouvez un catalogue riche en produits frais et de qualité.</p>
-            <a href="/app/catalogue" class="btn btn-hero">Parcourir</a>
+            <a href="#" class="btn btn-hero">Parcourir</a>
         </div>
     </section>
 	

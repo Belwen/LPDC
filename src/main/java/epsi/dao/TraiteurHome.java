@@ -6,11 +6,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
-import epsi.exception.PlatNotFoundException;
 import epsi.model.Plat;
 import epsi.model.Traiteur;
 
@@ -58,26 +56,6 @@ public class TraiteurHome {
 			throw re;
 		}
 	}
-	
-	public Traiteur findByName(String name) {
-		try {
-			Traiteur instance = entityManager.find(Traiteur.class, name);
-			return instance;
-		} catch (RuntimeException re) {
-			throw re;
-		}
-	}
-	
-	/*public Traiteur findById(Integer id_Produit){
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
-		EntityManager em = emf.createEntityManager();
-
-		
-			Traiteur traiteur = (Traiteur) em.createQuery("Select t FROM Traiteur t WHERE t.idTraiteur=:id")
-							.setParameter("id", id_Produit).getSingleResult();
-			return traiteur;
-		}	*/	
-	
 	
 	@SuppressWarnings("unchecked")
 	public List find(){

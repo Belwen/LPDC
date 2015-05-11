@@ -13,8 +13,6 @@ for(Traiteur traiteur: lestraiteurs){
 <h2><%= traiteur.getNomTraiteur() %> </h2>
 <h2><%= traiteur.getTelTraiteur() %> </h2>
 <h2><%= traiteur.getAdresse() %> </h2>
-
-<a href="/app/plattraiteur?id=<%= traiteur.getIdTraiteur()%>"><button></button> Voir les plats</a>
 <%
 
 }

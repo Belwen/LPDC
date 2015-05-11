@@ -103,6 +103,4 @@ public class CatalogueServlet extends HttpServlet{
 		dispatcher.forward(req, resp);
 	}
 	
-	
-	
 }

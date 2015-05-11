@@ -53,20 +53,13 @@
     <servlet-class>epsi.front.AjoutPanierServlet</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>SupprimePanierServlet</servlet-name>
+    <servlet-class>epsi.front.SupprimePanierServlet</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>TraiteurServlet</servlet-name>
     <servlet-class>epsi.front.TraiteurServlet</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>PlatTraiteurServlet</servlet-name>
-    <servlet-class>epsi.front.PlatTraiteurServlet</servlet-class>
-  </servlet>
-  
-  
-  <servlet-mapping>
-    <servlet-name>PlatTraiteurServlet</servlet-name>
-    <url-pattern>/app/plattraiteur</url-pattern>
-  </servlet-mapping>
-
   <servlet-mapping>
     <servlet-name>TraiteurServlet</servlet-name>
     <url-pattern>/app/traiteur</url-pattern>
@@ -78,6 +71,10 @@
   <servlet-mapping>
     <servlet-name>AjoutPanierServlet</servlet-name>
     <url-pattern>/app/ajoutPanier</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>SupprimePanierServlet</servlet-name>
+    <url-pattern>/app/supprimePanier</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>CreationClient</servlet-name>
