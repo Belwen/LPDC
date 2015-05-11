@@ -39,7 +39,7 @@
         <input type="password" id="mdp2" name="mdp2Client" value="" size="30" maxlength="30" placeholder="&#x25cf;&#x25cf;&#x25cf;&#x25cf;&#x25cf;&#x25cf;" />
         
         <label for="datenaiss">Votre date de naissance</label>
-        <input type="text" id="datenaiss" name="datenaissClient" value="" size="30" maxlength="60" placeholder="jj/mm/yyyy" />
+        <input type="date" id="datenaiss" name="datenaissClient" value="" size="30" maxlength="60" placeholder="jj/mm/yyyy" />
         
         <button type="submit" value="S'inscrire" class="btn-register" name="submit">S'inscrire</button>
         <input type="reset" value="R&#233;initialiser" class="btn-reset" /> 
