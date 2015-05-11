@@ -67,7 +67,7 @@ public class PanierServlet extends HttpServlet {
 			}
 			
 			
-			
+			req.setAttribute("listPlats", PC);
 			req.setAttribute("plats", plats);
 			// ca marchait apr�s �a
 			req.setAttribute("panier", panier);

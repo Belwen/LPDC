@@ -28,11 +28,15 @@
                 <div><%= plat.getPrix() %>&#x20AC;</div>
             </div>
             <form method="post" action="/app/ajoutPanier?id=<%= plat.getIdProduit()%>">
-   				<label for="nbre">Nombre produit <span class="requis">*</span></label>
-				<input type="number" id="nbre" name="nbre" value="1" size="8" maxlength="10" />
+				<input type="hidden" class="nbre" id="nbre" name="nbre" value="1" />
 	            <% if(request.getSession().getAttribute("user") != null){%>
 	            <div class="add-to-cart">
-	                <a href="/app/ajoutPanier?id=<%= plat.getIdProduit()%>"><img src="/static/images/cart.png" alt=""></a>
+	                <a href="/app/ajoutPanier?id=<%= plat.getIdProduit()%>"><button><img src="/static/images/cart.png" alt=""></button></a>
+	                <div class="quantite">
+                        <div class="remove"><a href="#" class="remove-quantite">-</a></div>
+                        <div class="number">1</div>
+                        <div class="add"><a href="#" class="add-quantite">+</a></div>
+                    </div>
 	            </div>
 	            <%} %>
             </form>
