@@ -7,8 +7,6 @@
 <%@page import="epsi.model.PanierContient"%>
 <%@page import="epsi.model.Produit"%>
 <%@page import="java.util.List" %>
-<%@page import="java.util.ArrayList" %>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@include file="header.jsp" %>
@@ -16,10 +14,11 @@
 <section class="container">
         <div class="product-list">
         <h1>Liste des plats</h1>
+        <p class="info">${ message }</p>
 
 <%
-List<Plat> plats = new ArrayList<Plat>();	
-plats = (List<Plat>) request.getAttribute("plat");	
+	List<Plat> plats = (List<Plat>) request.getAttribute("plat");	
+	List<Long> panier = (List<Long>) request.getAttribute("panier");
 	
 	for(Plat plat: plats){
 		%>
@@ -32,7 +31,7 @@ plats = (List<Plat>) request.getAttribute("plat");
             </div>
             <form method="post" action="/app/ajoutPanier?id=<%= plat.getIdProduit()%>">
 				<input type="hidden" class="nbre" id="nbre" name="nbre" value="1" />
-	            <% if(request.getSession().getAttribute("user") != null){%>
+	            <% if(request.getSession().getAttribute("user") != null && !panier.contains(plat.getIdProduit())){%>
 	            <div class="add-to-cart">
 	                <a href="/app/ajoutPanier?id=<%= plat.getIdProduit()%>"><button><img src="/static/images/cart.png" alt=""></button></a>
 	                <div class="quantite">
@@ -41,14 +40,12 @@ plats = (List<Plat>) request.getAttribute("plat");
                         <div class="add"><a href="#" class="add-quantite">+</a></div>
                     </div>
 	            </div>
-	            <%} %>
+	            <% } %>
             </form>
         </div>
 	<%}%>
 </div>
 </section>
-
-
 
 
 <%@include file="footer.jsp" %>

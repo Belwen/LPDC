@@ -1,5 +1,6 @@
 package epsi.front;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.io.IOException;
@@ -13,12 +14,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Hibernate;
 
+import epsi.dao.PanierContientHome;
+import epsi.dao.PanierHome;
 import epsi.dao.PlatHome;
 import epsi.dao.TraiteurHome;
 import epsi.exception.PlatNotFoundException;
+import epsi.model.Panier;
+import epsi.model.PanierContient;
 import epsi.model.Plat;
 import epsi.model.Produit;
 import epsi.model.Traiteur;
+import epsi.model.User;
 
 /**
  * Servlet implementation class TraiteurServlet
@@ -42,6 +48,28 @@ public class PlatTraiteurServlet extends HttpServlet {
 			int id_traiteur =  Integer.parseInt(req.getParameter("id")); 
 			List<Traiteur> traits = traiteurDAO.find();
 			Traiteur traiteur = null;
+			
+			PanierHome panDAO = new PanierHome();
+			PanierContientHome PCHDAO = new PanierContientHome();
+			
+			User us = (User) req.getSession().getAttribute("user");
+			
+			try{
+				Panier panier = panDAO.findByUser(us);
+				List<PanierContient> PC = PCHDAO.findAllPanier(panier);
+				ArrayList<Long> plats = new ArrayList<Long>();
+				
+				for(Iterator<PanierContient> i = PC.iterator(); i.hasNext(); ){
+					PanierContient panierList = i.next();
+					
+					Plat plat = platDAO.findById(panierList.getProduit().getIdProduit());
+					plats.add(plat.getIdProduit());
+					System.out.println("Coucou " + plat.getDesignation());
+				}
+				req.setAttribute("panier", plats);
+			} catch(Exception e){
+				e.printStackTrace();
+			}
 			
 			for(Traiteur letrait : traits)
 			{

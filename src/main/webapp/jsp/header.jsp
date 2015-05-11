@@ -19,6 +19,7 @@
         <nav>
             <div class="logo"><a href="/app"><img src="/static/images/lpdc_logo2.png" alt=""></a></div>
             <ul>
+            	<a href="#"><li>Catalogue</li></a>
             	<a href="/app/traiteur"><li>Traiteurs</li></a>
                 <a href="/app/panier"><li><img src="/static/images/cart_menu.png" alt=""></li></a>
             </ul>
@@ -27,6 +28,9 @@
     <%
 		if(request.getSession().getAttribute("user") == null){												
 	%>
+	<div class="user-logged-in"><p>Pas encore inscrit? 
+		<a href="/jsp/inscription.jsp">S'inscrire</a></p>
+	</div>
     <div class="login-form">
         <form action="/app/login" method="post">
             <div class="login-form-group">

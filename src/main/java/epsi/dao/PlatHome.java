@@ -110,6 +110,19 @@ public class PlatHome {
 		emf.close();
 		return plats;
 	}
+	@SuppressWarnings("unchecked")
+	public List<Plat> findHome(){
+		// Get entity manager
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
+		EntityManager em = emf.createEntityManager();
+
+		List<Plat> plats = em.createQuery("SELECT p FROM Plat p").setMaxResults(6).getResultList();
+			
+		//Close entity manager
+		em.close();
+		emf.close();
+		return plats;
+	}
 	
 	public Plat findByDesignation(String designation) throws PlatNotFoundException{
 		// Get entity manager
