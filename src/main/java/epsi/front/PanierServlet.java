@@ -1,6 +1,9 @@
 package epsi.front;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,6 +47,7 @@ public class PanierServlet extends HttpServlet {
 		PanierHome panDAO = new PanierHome();
 		PanierContientHome PCHDAO = new PanierContientHome();
 		PlatHome platDAO = new PlatHome();
+		
 		System.out.println("go before try doGet");		
 		try{
 			System.out.println("go in try doGet");
@@ -52,14 +56,20 @@ public class PanierServlet extends HttpServlet {
 			User us = (User) req.getSession().getAttribute("user");
 			
 			Panier panier = panDAO.findByUser(us);
-			// ca marchait avant ça
-			PanierContient PC = PCHDAO.findByPanier(panier);
-			System.out.println("tamre");
+			// ca marchait avant ï¿½a
+			List<Plat> plats = new ArrayList<Plat>();
+			List<PanierContient> PC = PCHDAO.findAllPanier(panier);
+			for(Iterator<PanierContient> i = PC.iterator(); i.hasNext(); ){
+				PanierContient panierList = i.next();
+				
+				Plat plat = platDAO.findById(panierList.getProduit().getIdProduit());
+				plats.add(plat);
+			}
 			
-			Plat leplat = platDAO.findById(PC.getProduit().getIdProduit());
 			
-			req.setAttribute("plat", leplat);
-			// ca marchait après ça
+			
+			req.setAttribute("plats", plats);
+			// ca marchait aprï¿½s ï¿½a
 			req.setAttribute("panier", panier);
 			
 			RequestDispatcher dispatcher = req.getRequestDispatcher("/jsp/panier.jsp");
