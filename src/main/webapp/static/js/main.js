@@ -16,17 +16,17 @@ $(document).ready(function(){
 	});
 	
 	
-	var totalPrice = 0;
+	var totalCart = 0;
 	$('.total-price').each(function(){
 		price = parseFloat($(this).parent().parent().find('.price').text());
 		number = parseInt($(this).parent().parent().find('.number').text());
 		
 		$(this).text(calcTotalPrice(number, price));
 		
-		totalPrice = totalPrice + calcTotalPrice(number, price);
+		totalCart = totalCart + calcTotalPrice(number, price);
 	});
 	
-	$('.total-cart').text(totalPrice);
+	$('.total-cart').text(totalCart);
 	
 	
 	function calcTotalPrice(number, price){
