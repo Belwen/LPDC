@@ -30,6 +30,7 @@ import epsi.model.User;
 @WebServlet("/AjoutPanierServlet")
 public class AjoutPanierServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	public static final String CHAMP_NOMBRE = "nbre";
        
 	public static final String VUE = "/app";
 	
@@ -43,62 +44,62 @@ public class AjoutPanierServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	        
-		
-		PanierHome panDAO = new PanierHome();
-		User us = (User) request.getSession().getAttribute("user");
-        ProduitHome prodDao = new ProduitHome();
-		
-		try {
-			Panier panier = panDAO.findByUser(us);
-			request.setAttribute("panier", panier);
-			 PanierContient pc = new PanierContient();
-		        pc.setPanier(panier);
-		        
-		        int foo = Integer.parseInt(request.getParameter("id"));
-		        long foo2 = (long) foo;
-		        Produit prod = prodDao.findById(foo2);
-		        
-		        pc.setProduit(prod);
-		        
-		        int nb = 1;
-		        pc.setNombreProduit(nb);
-		        
-		        PanierContientId PCI = new PanierContientId();
-		        int bar = (int) prod.getIdProduit();
-		        PCI.setIdProduits(bar);
-		        
-		        int bar2 = (int) panier.getIdPanier();
-		        PCI.setIdPanier(bar2);
-		        
-		        pc.setId(PCI);
-		        
-		        EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
-	    		EntityManager em = emf.createEntityManager();
-	    		
-	    		EntityTransaction transaction = em.getTransaction();
-	    		transaction.begin();
-	    		
-	    		em.persist(pc);
-	    		transaction.commit();
-	    		
-		} catch (MenuNotFoundException | UserNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-	        Panier lepanier = (Panier) request.getAttribute("panier");
-	       
-	        
-	        
-		        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
-	           
-	        
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+				String nbre_produit = request.getParameter( CHAMP_NOMBRE );
+				PanierHome panDAO = new PanierHome();
+				User us = (User) request.getSession().getAttribute("user");
+		        ProduitHome prodDao = new ProduitHome();
+				
+				try {
+					Panier panier = panDAO.findByUser(us);
+					request.setAttribute("panier", panier);
+					 PanierContient pc = new PanierContient();
+				        pc.setPanier(panier);
+				        
+				        int foo = Integer.parseInt(request.getParameter("id"));
+				        long foo2 = (long) foo;
+				        Produit prod = prodDao.findById(foo2);
+				        
+				        pc.setProduit(prod);
+				        
+				        int nb = Integer.parseInt(nbre_produit);
+				        pc.setNombreProduit(nb);
+				        
+				        PanierContientId PCI = new PanierContientId();
+				        int bar = (int) prod.getIdProduit();
+				        PCI.setIdProduits(bar);
+				        
+				        int bar2 = (int) panier.getIdPanier();
+				        PCI.setIdPanier(bar2);
+				        
+				        pc.setId(PCI);
+				        
+				        EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
+			    		EntityManager em = emf.createEntityManager();
+			    		
+			    		EntityTransaction transaction = em.getTransaction();
+			    		transaction.begin();
+			    		
+			    		em.persist(pc);
+			    		transaction.commit();
+			    		
+				} catch (MenuNotFoundException | UserNotFoundException e) {
+					e.printStackTrace();
+				}
+				
+			        Panier lepanier = (Panier) request.getAttribute("panier");
+			       
+			        
+			        
+				        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+			           
+			        
+			}
 	}
 
-}
+
