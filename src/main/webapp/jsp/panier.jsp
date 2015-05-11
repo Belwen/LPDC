@@ -3,6 +3,7 @@
     <%@ page import="java.sql.*" %>
     <%@page import="epsi.model.Panier"%>
     <%@page import="epsi.model.Plat"%>
+    <%@page import="epsi.model.PanierContient"%>
     <%@page import="java.util.List" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="epsi.front.CreationClientServlet" %>
@@ -11,36 +12,51 @@
 <% Panier lepanier = (Panier) request.getAttribute("panier"); %>
 
 <section class="container">
-<h1>Panier</h1>
-<h2><%= lepanier.getIdPanier() %></h2>
+	<table class="cart-list">
+	    <thead>
+	        <tr>
+	            <th>Produit</th>
+	            <th>Description</th>
+	            <th>Prix unitaire</th>
+	            <th>Quantité</th>
+	            <th>Total</th>
+	        </tr>
+	    </thead>
+	    <tbody>
 
 <%
-List<Plat> plats = (List<Plat>) request.getAttribute("plats");
 
-for(Plat plat: plats){
+List<PanierContient> plats = (List<PanierContient>) request.getAttribute("listPlats");
+
+for(PanierContient plat: plats){
 %>
-	<div class="product-infos">
-        <div class="product-image" style="background-image: url('<%= plat.getPosterPath() %>')">
-            <div class="product-price">
-                <img src="/static/images/price.png" alt="">
-                <div><%= plat.getPrix() %>&#x20AC;</div>
-            </div>
-        </div>
-        <h2><%= plat.getDesignation() %></h2>
-        <em class="type-cuisine">Cuisine Française</em>
-        <p><%= plat.getDescription() %></p>
-        <em class="nb-personnes">Pour <%= plat.getNbPersonne() %> personne</em>
-        <em class="plat-chaud">
-        <% if(plat.isEstChaud() == true)
-        	out.println("Plat Chaud");
-       	   else if (plat.isEstChaud() == false)
-       		out.println("Plat Froid"); %>
-        </em>
-        <a href="#">Ajouter au panier</a>
-    </div>
+		<tr>
+			<td><div class="product-image" style="background-image: url('<%= plat.getProduit().getPlat().getPosterPath() %>')"></div></td>
+			<td class="product-description">
+				<div><%= plat.getProduit().getPlat().getDesignation() %></div>
+				<span><%= plat.getProduit().getPlat().getDescription() %></span>
+			</td>
+			<td align="center" width="120px"><span class="price"><%= plat.getProduit().getPlat().getPrix() %>&#x20AC;</span></td>
+			<td align="center" width="150px">
+				<div class="quantite">
+					<div class="remove"><a href="#">-</a></div>
+					<div class="number"><%= plat.getNombreProduit() %></div>
+					<div class="add"><a href="#">+</a></div>
+				</div>
+			</td>
+			<td align="center"><span class="total-price"></span>&#x20AC;</td>
+		</tr>
 <% } %>
+		</tbody>
+		<tfoot>
+			<tr>
+            	<td colspan="4"></td>
+            	<td align="center"><span class="total-cart"></span>&#x20AC;</td>
+            </tr>
+        </tfoot>
+	</table>
+</section>
 
 <% User user  = (User) request.getSession().getAttribute("user");%>
 <p>User id :</p><%=user.getIdUser()%>
-</section>
 <%@include file="footer.jsp" %>

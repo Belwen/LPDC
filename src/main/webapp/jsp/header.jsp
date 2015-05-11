@@ -8,6 +8,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Montserrat|Sacramento' rel='stylesheet' type='text/css'>
 	<script src="/static/js/jquery.js" type="text/javascript"></script>
 	<script src="/static/js/bootstrap.js" type="text/javascript"></script>
+	<script src="/static/js/main.js" type="text/javascript"></script>
 	<link href="/static/css/bootstrap.css" rel="stylesheet"/>
 	<link href="/static/css/style.css" rel="stylesheet"/>
 	
