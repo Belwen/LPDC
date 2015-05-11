@@ -372,6 +372,89 @@ section.container > .registration .btn-reset{
 	text-decoration: none;
 }
 
+section.container > .sidebar{
+	float: left;
+	width: 300px;
+	margin-right: 20px;
+}
+section.container > .sidebar input[type="submit"]{
+	background: #a0c345;
+	border: none;
+	margin: 10px 0;
+	padding: 8px 16px;
+	font-size: 14px;
+	color: #fff;
+}
+section.container > .catalogue-list{
+	margin-left: 320px;
+}
+section.container > .catalogue-list .product{
+	position: relative;
+	overflow: hidden;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #efefef;
+	margin-top: 20px;
+}
+section.container > .catalogue-list .product:last-child{
+	border: none;
+}
+section.container > .catalogue-list .product-image{
+	width: 100px;
+	min-height: 100px;
+	background-size: cover;
+	float: left;
+	margin-right: 20px;
+}
+section.container > .catalogue-list .product-price img{
+	display: none;
+}
+section.container > .catalogue-list .add-to-cart{
+	position: absolute;
+	right: 5px;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+section.container > .catalogue-list .add-to-cart button{
+	background: #a0c345;
+	border: none;
+	margin: 10px 0;
+	padding: 8px 16px;
+	font-size: 14px;
+	color: #fff;
+}
+section.container > .catalogue-list .quantite{
+	left: -70px;
+	top: 15px;
+	position: absolute;
+}
+section.container > .catalogue-list .quantite div{
+	color: #2C2C2C;
+	display: inline-block;
+}
+section.container > .catalogue-list .quantite .number{
+	padding: 0 10px;
+}
+section.container > .catalogue-list .quantite .remove a,
+section.container > .catalogue-list .quantite .add a{
+	font-size: 20px;
+	color: #aecd53;
+	text-decoration: none;
+}
+section.container > .catalogue-list .add-to-cart .quantite div{
+	float: left;
+}
+section.container > .catalogue-list .product-description{
+	font-size: 14px;
+	font-style: italic;
+	color: #2C2C2C;
+	width: 450px;
+}
+section.container > .catalogue-list .product-price{
+	margin-top: 10px;
+}
+
 footer{
 	background: #272727;
 	color: #fff;
