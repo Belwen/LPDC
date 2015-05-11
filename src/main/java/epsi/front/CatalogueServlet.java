@@ -27,7 +27,7 @@ import epsi.model.Menu;
 import epsi.dao.MenuHome;
 import epsi.exception.UserNotFoundException;
 
-public class HomeServlet extends HttpServlet{
+public class CatalogueServlet extends HttpServlet{
 	
 	private String LOGIN_COOKIE = "loginCookie";
 	
@@ -73,7 +73,7 @@ public class HomeServlet extends HttpServlet{
 		
 		
 		PlatHome platDao = new PlatHome();
-		req.setAttribute("plats", platDao.findHome());
+		req.setAttribute("plats", platDao.find());
 		
 		MenuHome menuDao = new MenuHome();
 		req.setAttribute("menus", menuDao.find());
@@ -99,7 +99,7 @@ public class HomeServlet extends HttpServlet{
 			}
 		}
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/jsp/home.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/jsp/catalogue.jsp");
 		dispatcher.forward(req, resp);
 	}
 	

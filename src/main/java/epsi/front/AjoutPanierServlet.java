@@ -31,6 +31,7 @@ import epsi.model.User;
 public class AjoutPanierServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String CHAMP_NOMBRE = "nbre";
+	public static final String ATT_MESSAGE = "message";
        
 	public static final String VUE = "/app";
 	
@@ -55,6 +56,7 @@ public class AjoutPanierServlet extends HttpServlet {
 				User us = (User) request.getSession().getAttribute("user");
 		        ProduitHome prodDao = new ProduitHome();
 				
+		        String message;
 				try {
 					Panier panier = panDAO.findByUser(us);
 					request.setAttribute("panier", panier);
@@ -87,6 +89,9 @@ public class AjoutPanierServlet extends HttpServlet {
 			    		
 			    		em.persist(pc);
 			    		transaction.commit();
+			    		
+			    		message = "Le produit a bien été ajouté au panier.";
+			    		request.setAttribute( ATT_MESSAGE, message );
 			    		
 				} catch (MenuNotFoundException | UserNotFoundException e) {
 					e.printStackTrace();
