@@ -47,6 +47,15 @@
     <servlet-name>AjoutPanierServlet</servlet-name>
     <servlet-class>epsi.front.AjoutPanierServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>TraiteurServlet</servlet-name>
+    <servlet-class>epsi.front.TraiteurServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>TraiteurServlet</servlet-name>
+    <url-pattern>/app/traiteur</url-pattern>
+  </servlet-mapping>  
   
   <servlet-mapping>
     <servlet-name>PanierServlet</servlet-name>
