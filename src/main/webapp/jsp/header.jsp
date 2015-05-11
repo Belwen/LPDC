@@ -19,6 +19,7 @@
         <nav>
             <div class="logo"><a href="/app"><img src="/static/images/lpdc_logo2.png" alt=""></a></div>
             <ul>
+            	<a href="/app/traiteur"><li>Traiteurs</li></a>
                 <a href="/app/panier"><li><img src="/static/images/cart_menu.png" alt=""></li></a>
             </ul>
         </nav>
