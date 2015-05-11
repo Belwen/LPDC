@@ -2,6 +2,7 @@
 <%@page import="epsi.model.Plat"%>
 <%@page import="epsi.dao.MenuHome" %>
 <%@page import="epsi.model.Menu"%>
+<%@page import="epsi.model.Panier"%>
 <%@page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -24,7 +25,7 @@
    				</a>
    				
    				<% if(request.getSession().getAttribute("user") != null){%>
-   				<a href="./app/ajoutPanier">
+   				<a href="./app/ajoutPanier?id=<%= plat.getIdProduit()%>">
      				<button class="btn btn-default">Ajouter au Panier</button>
    				</a>
    				<%} %>
@@ -58,6 +59,7 @@
 	<%}%>
 </ul>
 </div>
+
 
 
 <%@include file="footer.jsp" %>

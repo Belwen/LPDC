@@ -12,7 +12,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import epsi.dao.PanierHome;
+import epsi.dao.ProduitHome;
+import epsi.exception.MenuNotFoundException;
+import epsi.exception.UserNotFoundException;
+import epsi.model.Panier;
+import epsi.model.PanierContient;
+import epsi.model.PanierContientId;
+import epsi.model.Produit;
 import epsi.model.User;
+
+
 
 /**
  * Servlet implementation class AjoutPanierServlet
@@ -21,9 +31,8 @@ import epsi.model.User;
 public class AjoutPanierServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	public static final String VUE = "/app";
+	
     public AjoutPanierServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -33,64 +42,55 @@ public class AjoutPanierServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 	String nom = request.getParameter( CHAMP_NOM );
-	        String prenom = request.getParameter( CHAMP_PRENOM );
-	        String adresse = request.getParameter( CHAMP_ADRESSE );
-
-
-	        String message;
-	        boolean erreur;
 	        
-	        User user = null;
-	        if ( nom.trim().isEmpty() || adresse.trim().isEmpty() || telephone.trim().isEmpty() || mdp.trim().isEmpty() || email.trim().isEmpty() ) {
-	        	message = "Erreur- Vous n'avez pas rempli tous les champs obligatoires.";
-	            erreur = true;
-	            request.setAttribute( ATT_CLIENT, user );
-		        request.setAttribute( ATT_MESSAGE, message );
-		        request.setAttribute( ATT_ERREUR, erreur );
-	            this.getServletContext().getRequestDispatcher( ERREUR ).forward( request, response );
-	            
-	        } 
-	        else if (mdp.contentEquals(mdp2))
-	        {
-	            message = "Nous avons bien recu votre demande d'inscription. Veuilez dès à present vous connecter juste au dessus.";
-	            erreur = false;
-	            
-	            user = new User();
-	            user.setNom( nom );
-	            user.setPrenom( prenom );
-	            user.setAdresse( adresse );
-	            user.setTelephone( telephone );
-	            user.setEmail( email );
-	            user.setPassword( mdp );
-	            user.setDateNaissance( datenaiss );
-	            
-	            
-	    		EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
+		
+		PanierHome panDAO = new PanierHome();
+		User us = (User) request.getSession().getAttribute("user");
+        ProduitHome prodDao = new ProduitHome();
+		
+		try {
+			Panier panier = panDAO.findByUser(us);
+			request.setAttribute("panier", panier);
+			 PanierContient pc = new PanierContient();
+		        pc.setPanier(panier);
+		        
+		        int foo = Integer.parseInt(request.getParameter("id"));
+		        long foo2 = (long) foo;
+		        Produit prod = prodDao.findById(foo2);
+		        
+		        pc.setProduit(prod);
+		        
+		        int nb = 1;
+		        pc.setNombreProduit(nb);
+		        
+		        PanierContientId PCI = new PanierContientId();
+		        int bar = (int) prod.getIdProduit();
+		        PCI.setIdProduits(bar);
+		        
+		        int bar2 = (int) panier.getIdPanier();
+		        PCI.setIdPanier(bar2);
+		        
+		        pc.setId(PCI);
+		        
+		        EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
 	    		EntityManager em = emf.createEntityManager();
 	    		
 	    		EntityTransaction transaction = em.getTransaction();
 	    		transaction.begin();
 	    		
-	    		em.persist(user);
+	    		em.persist(pc);
 	    		transaction.commit();
 	    		
-	    		request.setAttribute( ATT_CLIENT, user );
-		        request.setAttribute( ATT_MESSAGE, message );
-		        request.setAttribute( ATT_ERREUR, erreur );
+		} catch (MenuNotFoundException | UserNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+	        Panier lepanier = (Panier) request.getAttribute("panier");
+	       
+	        
+	        
 		        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 	           
-	        }
-	        else
-	        {
-	        	message = "Erreur - vos mots de passes ne sont pas identiques.";
-	        	erreur = true;
-	        	request.setAttribute( ATT_CLIENT, user );
-		        request.setAttribute( ATT_MESSAGE, message );
-		        request.setAttribute( ATT_ERREUR, erreur );
-	        	this.getServletContext().getRequestDispatcher( ERREUR ).forward( request, response );
-	        	
-	        }
 	        
 	}
 

@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import epsi.dao.UserDao;
+import epsi.model.Panier;
 import epsi.model.User;
 
 @SuppressWarnings("serial")
@@ -85,8 +86,8 @@ public class CreationClientServlet extends HttpServlet {
 	            user.setEmail( email );
 	            user.setPassword( mdp );
 	            user.setDateNaissance( datenaiss );
-	            
-	            
+	         
+	            //Création de l'utilisateur
 	    		EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
 	    		EntityManager em = emf.createEntityManager();
 	    		
@@ -95,7 +96,23 @@ public class CreationClientServlet extends HttpServlet {
 	    		
 	    		em.persist(user);
 	    		transaction.commit();
+	    		em.close();
+	    		emf.close();
 	    		
+	    		//Création du panier automatiquement après l'ajout de l'utilisateur
+    		 	Panier panier = new Panier();
+	            java.util.Date date= new java.util.Date();
+	            panier.setDateTime(date);
+	            panier.setUser(user);
+	            
+	            EntityManagerFactory emf2 = Persistence.createEntityManagerFactory("musciPU");
+	    		EntityManager em2 = emf2.createEntityManager();
+	    		
+	    		EntityTransaction transaction2 = em2.getTransaction();
+	    		transaction2.begin();
+	            em2.persist(panier);
+	    		transaction2.commit();
+		            
 	    		request.setAttribute( ATT_CLIENT, user );
 		        request.setAttribute( ATT_MESSAGE, message );
 		        request.setAttribute( ATT_ERREUR, erreur );

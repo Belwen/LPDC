@@ -11,13 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import epsi.business.TokenService;
+import epsi.dao.PanierHome;
 import epsi.dao.TokenDao;
 import epsi.dao.UserDao;
+import epsi.model.Panier;
+import epsi.model.PanierContient;
 import epsi.model.User;
 import epsi.model.Plat;
 import epsi.dao.PlatHome;
 import epsi.model.Menu;
 import epsi.dao.MenuHome;
+import epsi.exception.UserNotFoundException;
 
 public class HomeServlet extends HttpServlet{
 	
