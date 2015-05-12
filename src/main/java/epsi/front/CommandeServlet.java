@@ -90,6 +90,7 @@ public class CatalogueServlet extends HttpServlet{
 		lacom.setCommandeContients(listCCUser);
 		
 		
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/jsp/catalogue.jsp");
 		dispatcher.forward(req, resp);
 	}
