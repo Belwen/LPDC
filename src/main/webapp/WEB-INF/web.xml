@@ -80,7 +80,7 @@
     <servlet-name>AjoutPanierServlet</servlet-name>
     <url-pattern>/app/ajoutPanier</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>SupprimePanierServlet</servlet-name>
     <url-pattern>/app/supprimePanier</url-pattern>
   </servlet-mapping>
