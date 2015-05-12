@@ -47,26 +47,6 @@
 </div>
 </section>
 
-<h1>Les menus</h1>
-<div class="menu">
-<ul class="media-list">
-<%
-	List<Menu> menus = (List<Menu>) request.getAttribute("menus");	
-	
-	for(Menu menu: menus){
-		%>
-		<li class="media">
-				<a href="/app/menus?id=<%= menu.getIdProduit() %>">
-     				<div class="media-body">
-   						<h4 class="media-heading"><%= menu.getDesignation()  %></h4>
- 					</div>
-   				</a>
- 				
-		</li>
-	<%}%>
-</ul>
-</div>
-
 
 
 <%@include file="footer.jsp" %>

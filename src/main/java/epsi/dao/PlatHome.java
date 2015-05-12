@@ -15,6 +15,7 @@ import org.hibernate.Hibernate;
 
 import epsi.exception.PlatNotFoundException;
 import epsi.model.Plat;
+import epsi.model.TypeCuisine;
 import epsi.model.User;
 
 /**
@@ -117,6 +118,27 @@ public class PlatHome {
 		EntityManager em = emf.createEntityManager();
 
 		List<Plat> plats = em.createQuery("SELECT p FROM Plat p").setMaxResults(6).getResultList();
+			
+		//Close entity manager
+		em.close();
+		emf.close();
+		return plats;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Plat> findByParams(TypeCuisine type_cuisine, int nb_personnes, boolean temperature){
+		// Get entity manager
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
+		EntityManager em = emf.createEntityManager();
+		
+		int int_temperature = (temperature) ? 1 : 0;
+
+		List<Plat> plats = em.createQuery("SELECT p FROM Plat p WHERE p.typeCuisine=:typeCuisine AND p.nbPersonne=:nbPersonne AND p.estChaud=:temperature")
+				.setParameter("typeCuisine", type_cuisine)
+				.setParameter("nbPersonne", nb_personnes)
+				.setParameter("temperature", temperature)
+				.getResultList();
+				
 			
 		//Close entity manager
 		em.close();
