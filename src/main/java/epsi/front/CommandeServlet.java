@@ -36,7 +36,7 @@ import epsi.model.Menu;
 import epsi.dao.MenuHome;
 import epsi.exception.UserNotFoundException;
 
-public class CatalogueServlet extends HttpServlet{
+public class CommandeServlet extends HttpServlet{
 	
 	private String LOGIN_COOKIE = "loginCookie";
 	
