@@ -16,6 +16,11 @@
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet>
+    <servlet-name>rechercheServlet</servlet-name>
+    <servlet-class>epsi.front.RechercheServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
     <servlet-name>loginServlet</servlet-name>
     <servlet-class>epsi.front.LoginServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
@@ -103,6 +108,10 @@
   <servlet-mapping>
     <servlet-name>catalogueServlet</servlet-name>
     <url-pattern>/app/catalogue</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>rechercheServlet</servlet-name>
+    <url-pattern>/app/recherche</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>loginServlet</servlet-name>

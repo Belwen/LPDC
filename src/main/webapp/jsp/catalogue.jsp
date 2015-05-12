@@ -13,31 +13,25 @@
 
 <section class="container">
 		<div class="sidebar">
-			<form action="/app/catalogue" method="post">
+			<form action="/app/recherche" method="post">
             <h3>Type de cuisine</h3>
             <div class="radio">
               <label>
-                <input type="radio" name="type-cuisine" id="type-cuisine0" value="" checked>
-                 -
+                <input type="radio" name="type-cuisine" id="type-cuisine1" value="1" checked >
+                Francaise
               </label>
             </div>
             <div class="radio">
               <label>
-                <input type="radio" name="type-cuisine" id="type-cuisine1" value="1" >
-                Francaise
+                <input type="radio" name="type-cuisine" id="type-cuisine2" value="2">
+                Mexicain
               </label>
             </div>
 
             <h3>Personnes</h3>
             <div class="radio">
               <label>
-                <input type="radio" name="nb-personnes" id="type-cuisine0" value="" checked>
-                -
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="nb-personnes" id="nb-personnes1" value="1">
+                <input type="radio" name="nb-personnes" id="nb-personnes1" value="1" checked>
                 1 personne
               </label>
             </div>
@@ -57,13 +51,7 @@
             <h3>Temperature</h3>
             <div class="radio">
               <label>
-                <input type="radio" name="temperature" id="temperature" value="" checked>
-                -
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="temperature" id="chaud" value="1">
+                <input type="radio" name="temperature" id="chaud" value="1" checked>
                 Chaud
               </label>
             </div>
